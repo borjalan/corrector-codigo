@@ -5,8 +5,13 @@
   "repository": "https://github.com/borjalan/corrector-codigo.git",
   "license": "MIT",
   "author": "Borja Landaburu <borjalan@hotmail.com>, Alvaro Honrubia<alvaro.honrubia@gmail.com>",
-  "scripts": {},
-  "dependencies": {},
+  "scripts": {
+    "build": "tsc -p ./src",
+    "start": "tsc -p ./src && node ./build/index.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0"
+  },
   "devDependencies": {
     "@types/node": "^12.0.0",
     "typescript": "^4.0.3"
