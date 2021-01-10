@@ -2,14 +2,16 @@ import { reglas, actionsGoto } from '../Assets/Params';
 import { Action, Token } from '../types/types';
 
 let pilaSintactico: Array<string | number> = ['$', 0];
+let parsedTokens: Array<Token>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
 const parse = (token: Token): string | number => {
+  let estadoActual: number = parseInt(obtenerEstadoActual());
   const accion: string = actionsGoto[estadoActual][columnaAcciones];
   const columnaAcciones: number = obtenerColumnaAcciones(token);
 
-  let estadoActual: number = parseInt(obtenerEstadoActual());
+  parsedTokens.push(token);
 
   if (esDesplazamiento(accion)) {
     const desplazamiento: number = valorNum(accion);
@@ -28,7 +30,7 @@ const parse = (token: Token): string | number => {
   } else if (esAceptar(accion)) {
     return 'Finalizado';
   } else {
-    return generarError(token);
+    return 'Sintax Error';
   }
 };
 
@@ -90,7 +92,7 @@ const getColumnaRegla = (numRegla: number): number => {
   }
 };
 
-const obtenerEstadoActual = () => {
+const obtenerEstadoActual = (): string | number => {
   return pilaSintactico[pilaSintactico.length - 1];
 };
 
@@ -180,7 +182,7 @@ const obtenerNumProducciones = (action: Action): number => {
   const producciones: Array<string> = reglas[numeroRegla][1].split(' ');
 
   let numProducciones: number = producciones.length;
-  
+
   if (producciones.includes('λ')) {
     numProducciones--;
   }
