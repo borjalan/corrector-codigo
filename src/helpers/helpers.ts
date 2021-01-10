@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as chalk from 'chalk';
 
 // Tipos
-import { Token } from '../types/Token';
+import { Token } from '../types/types';
 
 // ---------------------------------------------------- Log -----------------------------------------------------
 const eraseFileIfExist = (file: fs.PathLike) => {

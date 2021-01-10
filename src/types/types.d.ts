@@ -10,3 +10,7 @@ export interface Token {
     columna: number;
   };
 }
+
+export type Action = `${'s' | 'r' | ''}${number}` | 'acc';
+
+export interface TablaSimbolos {}

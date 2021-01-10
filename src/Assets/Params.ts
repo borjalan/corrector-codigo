@@ -1,9 +1,24 @@
-/* eslint-disable no-sparse-arrays */
-/* eslint-disable indent */
 /*----------------------------------------------------------------------------------------------------
                                             Parámetros
   ----------------------------------------------------------------------------------------------------*/
-export const reglas =
+export const reservadas: Array<string> =
+  // Este array contiene todas las palabras reservadas de js
+  [
+    'bool',
+    'do',
+    'if',
+    'int',
+    'string',
+    'return',
+    'var',
+    'while',
+    'function',
+    'input',
+    'print',
+    'true',
+    'false',
+  ];
+export const reglas: Array<[string, string]> =
   // Este array contiene las reglas de la gramática para reducir
   [
     ['Z', 'A'], //0
@@ -60,24 +75,7 @@ export const reglas =
     ['W', 'cte_cad'], //51
     ['W', 'T'], //52
   ];
-  export const reservadas =
-  // Este array contiene todas las palabras reservadas de js
-  [
-    'bool',
-    'do',
-    'if',
-    'int',
-    'string',
-    'return',
-    'var',
-    'while',
-    'function',
-    'input',
-    'print',
-    'true',
-    'false',
-  ];
-  export const actionsGoto =
+export const actionsGoto: Array<string[]> =
   // Matriz combinada actions + goto
   [
     // var   id     ;      do     {      }      while  (      )      if     ret    =      %=     print  input  funct  str    int    bool   ,      !      >      cte_n  +      cte_c  $      Z      A      B      C      D      E      F      G      H      I      J      K      L      M      N      O      P      Q      R      S      T      U      V      W

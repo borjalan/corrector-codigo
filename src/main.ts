@@ -6,7 +6,8 @@ import {
   escribirParse,
 } from './helpers/helpers';
 import * as Lexico from './Lexico/Lexico';
-import { Token } from './types/Token';
+import * as Sintactico from './Sintactico/Sintactico';
+import { Token } from './types/types';
 
 /*----------------------------------------------------------------------------------------------------
                                                 Main
@@ -19,12 +20,12 @@ const main = (path: string, flags: boolean[]): void => {
   // Iniciar Lexico
   Lexico.setFichero(path);
   let token: Token = Lexico.getToken();
-  let resultadoSintax = 'Initial';
+  let resultadoSintax: string | number = 'Initial';
   consolaToken(token);
   writeTokenOnLog(token);
 
   while (resultadoSintax != 'Finalizado' || !stop) {
-    // resultadoSintax = Sintactico.parse(token);
+    resultadoSintax = Sintactico.parse(token);
     switch (resultadoSintax) {
       case 'Desplazado':
         token = Lexico.getToken();

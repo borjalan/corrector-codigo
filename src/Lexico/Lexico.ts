@@ -3,15 +3,14 @@ import * as fs from 'fs';
 import * as chalk from 'chalk';
 
 // Tipos
-import { Token } from '../types/Token';
+import { Token } from '../types/types';
 
 // Constantes
-import * as Params from '../Assets/Params';
+import { reservadas } from '../Assets/Params';
 
 // Variables
 let pila: string = '';
 let caracter: string = '';
-let reservadas: string[] = Params.reservadas;
 
 let punteroChar: number = 0;
 let estado: number = 0;
