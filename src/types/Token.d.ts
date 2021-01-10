@@ -1,4 +1,4 @@
-interface Token {
+export interface Token {
   codigo: string;
   atributo?: {
     nombre?: string;
@@ -10,5 +10,3 @@ interface Token {
     columna: number;
   };
 }
-
-export { Token };
