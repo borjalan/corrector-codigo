@@ -1,5 +1,5 @@
 import { reglas, actionsGoto } from '../Assets/Params';
-import { Token } from '../types/types';
+import { Token } from '../Types/Types';
 
 let pilaSintactico: Array<string> = ['$', '0'];
 let parsedTokens: Array<Token>;

@@ -4,10 +4,10 @@ import {
   consolaToken,
   writeTokenOnLog,
   escribirParse,
-} from './helpers/helpers';
+} from './Helpers/Helpers';
 import * as Lexico from './Lexico/Lexico';
 import * as Sintactico from './Sintactico/Sintactico';
-import { Token } from './types/types';
+import { Token } from './Types/Types';
 
 /*----------------------------------------------------------------------------------------------------
                                                 Main
