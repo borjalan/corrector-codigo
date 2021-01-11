@@ -1,22 +1,22 @@
 import { reglas, actionsGoto } from '../Assets/Params';
-import { Action, Token } from '../types/types';
+import { Token } from '../types/types';
 
-let pilaSintactico: Array<string | number> = ['$', 0];
+let pilaSintactico: Array<string> = ['$', '0'];
 let parsedTokens: Array<Token>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
-const parse = (token: Token): string | number => {
-  let estadoActual: number = parseInt(obtenerEstadoActual());
-  const accion: string = actionsGoto[estadoActual][columnaAcciones];
+const parse = (token: Token): string => {
+  let estadoActual: number = obtenerEstadoActual();
   const columnaAcciones: number = obtenerColumnaAcciones(token);
+  const accion: string = actionsGoto[estadoActual][columnaAcciones];
 
   parsedTokens.push(token);
 
   if (esDesplazamiento(accion)) {
     const desplazamiento: number = valorNum(accion);
-    pilaSintactico.push(columnaAcciones);
-    pilaSintactico.push(desplazamiento);
+    pilaSintactico.push(columnaAcciones.toString());
+    pilaSintactico.push(desplazamiento.toString());
     return 'Desplazado';
   } else if (esReducción(accion)) {
     const numRegla: number = valorNum(accion);
@@ -24,13 +24,14 @@ const parse = (token: Token): string | number => {
     const columnaRegla: number = getColumnaRegla(numRegla);
     aplicarReduccion(produccionesRegla);
     estadoActual = obtenerEstadoActual();
-    pilaSintactico.push(numRegla);
-    pilaSintactico.push(parseInt(actionsGoto[estadoActual][columnaRegla]));
-    return numRegla;
+    pilaSintactico.push(numRegla.toString());
+    pilaSintactico.push(actionsGoto[estadoActual][columnaRegla]);
+    return numRegla.toString();
   } else if (esAceptar(accion)) {
     return 'Finalizado';
   } else {
-    return 'Sintax Error';
+    // Tratamiento errores
+    return 'Error';
   }
 };
 
@@ -92,13 +93,13 @@ const getColumnaRegla = (numRegla: number): number => {
   }
 };
 
-const obtenerEstadoActual = (): string | number => {
-  return pilaSintactico[pilaSintactico.length - 1];
+const obtenerEstadoActual = (): number => {
+  return parseInt(pilaSintactico[pilaSintactico.length - 1]);
 };
 
 const obtenerColumnaAcciones = (token: Token): number => {
   const codigo = token.codigo;
-  const lexema = token.atributo.cadena;
+  const lexema = token.atributo && token.atributo.cadena;
   // TODO Añadir nuevas reservadas
   switch (true) {
     case codigo == 'RESERVADA' && lexema == 'var':
@@ -158,26 +159,26 @@ const obtenerColumnaAcciones = (token: Token): number => {
   }
 };
 
-const esDesplazamiento = (action: Action): boolean => {
+const esDesplazamiento = (action: string): boolean => {
   if (!action) return false;
   return action.split('')[0] == 's';
 };
 
-const esReducción = (action: Action): boolean => {
+const esReducción = (action: string): boolean => {
   if (!action) return false;
   return action.split('')[0] == 'r';
 };
 
-const esAceptar = (action: Action): boolean => {
+const esAceptar = (action: string): boolean => {
   if (!action) return false;
   return action == 'acc';
 };
 
-const valorNum = (action: Action): number => {
+const valorNum = (action: string): number => {
   return parseInt(action.substr(1, action.length - 1));
 };
 
-const obtenerNumProducciones = (action: Action): number => {
+const obtenerNumProducciones = (action: string): number => {
   const numeroRegla: number = valorNum(action);
   const producciones: Array<string> = reglas[numeroRegla][1].split(' ');
 

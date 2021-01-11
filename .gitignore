@@ -9,6 +9,10 @@
 # production
 /build
 
+# Conversores
+/src/Conversores/Outputs
+/src/Conversores/Inputs
+
 # misc
 .DS_Store
 .env.local

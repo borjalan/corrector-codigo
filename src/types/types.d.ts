@@ -11,6 +11,12 @@ export interface Token {
   };
 }
 
-export type Action = `${'s' | 'r' | ''}${number}` | 'acc';
+/*
+  type StxError = '    ';
+  type Fin = 'acc';
+  type Reduccion = `r${number}`;
+  type Desplazamiento = `s${number}`;
+  export type Action = Fin | Reduccion | Desplazamiento | StxError;
+*/
 
 export interface TablaSimbolos {}

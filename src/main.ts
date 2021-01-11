@@ -20,11 +20,11 @@ const main = (path: string, flags: boolean[]): void => {
   // Iniciar Lexico
   Lexico.setFichero(path);
   let token: Token = Lexico.getToken();
-  let resultadoSintax: string | number = 'Initial';
+  let resultadoSintax: string = 'Initial';
   consolaToken(token);
   writeTokenOnLog(token);
 
-  while (resultadoSintax != 'Finalizado' || !stop) {
+  while (resultadoSintax != 'Finalizado') {
     resultadoSintax = Sintactico.parse(token);
     switch (resultadoSintax) {
       case 'Desplazado':
@@ -33,11 +33,13 @@ const main = (path: string, flags: boolean[]): void => {
         writeTokenOnLog(token);
         break;
       case 'Finalizado':
-        escribirParse(0);
+        escribirParse('0');
         // Semantico.accionesSemántico(0, token);
         break;
+      case 'Error':
+        break;
       default:
-        // escribirParse(resultadoSintax);
+        escribirParse(resultadoSintax);
         // if (!isNaN(resultadoSintax)) {
         //   Semantico.accionesSemántico(resultadoSintax, token);
         // }

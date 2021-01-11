@@ -165,13 +165,13 @@ const logicaAutomata = (): Token => {
           return {
             codigo: 'RESERVADA',
             atributo: { cadena: pila },
-            posicion: { linea: linea, columna: columna - cadena.length },
+            posicion: { linea: linea, columna: columna - pila.length },
           };
         } else {
           return {
             codigo: 'ID',
             atributo: { nombre: pila, numero: 0 },
-            posicion: { linea: linea, columna: columna - cadena.length },
+            posicion: { linea: linea, columna: columna - pila.length },
           };
         }
       }
@@ -296,10 +296,13 @@ const baseCaseCheck = (): Token | undefined => {
       };
     case '/':
       changeState(1);
+      break;
     case "'":
       changeState(4);
+      break;
     case '%':
       changeState(19);
+      break;
     default: {
       if (/[a-zA-Z]/.test(caracter)) {
         pila = caracter;
@@ -332,11 +335,11 @@ const changeState = (newState: number): void => {
   if (newState == 0) pila = caracteres[punteroChar][0];
 };
 
-const checkfinal = (): Token => {
+const checkfinal = (): Token | undefined => {
   let resultado: Token = { codigo: 'FINAL', atributo: { cadena: 'FINAL' } };
   if (punteroChar >= caracteres.length - 1) {
     switch (estado) {
-      case 1 | 2 | 3: {
+      case 1 | 2 | 3:
         fs.appendFileSync(
           'Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
@@ -346,8 +349,7 @@ const checkfinal = (): Token => {
             ' ): Se esperaba que se cerrase el comentario.\n'
         );
         break;
-      }
-      case 4: {
+      case 4:
         fs.appendFileSync(
           'Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
@@ -357,16 +359,14 @@ const checkfinal = (): Token => {
             ' ): Se esperaba que se cerrase la cadena.\n'
         );
         break;
-      }
-      case 16: {
+      case 16:
         resultado = {
           codigo: 'ID',
           atributo: { nombre: pila, numero: 0 },
           posicion: { linea: linea, columna: columna - pila.length },
         };
         break;
-      }
-      case 19: {
+      case 19:
         fs.appendFileSync(
           'Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
@@ -376,15 +376,13 @@ const checkfinal = (): Token => {
             " ): El caracter '%' debe ir seguido de '=', operador no reconocido.\n"
         );
         break;
-      }
-      case 21: {
+      case 21:
         resultado = {
           codigo: 'NUM',
           atributo: { nombre: pila, numero: 0 },
           posicion: { linea: linea, columna: columna - pila.length },
         };
         break;
-      }
     }
     changeState(0);
     return resultado;

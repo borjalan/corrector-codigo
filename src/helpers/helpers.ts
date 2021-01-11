@@ -28,10 +28,8 @@ const crearLogsNuevos = () => {
   fs.appendFileSync('Parse.txt', 'Ascendente ');
 };
 
-const escribirParse = resultado => {
-  if (!isNaN(resultado)) {
-    fs.appendFileSync('Parse.txt', resultado + ' ');
-  } else if (resultado != 'Desplazado' && resultado != 'Finalizado') {
+const escribirParse = (resultado: string): void => {
+  if (resultado != ('Desplazado' || 'Finalizado' || 'Error')) {
     fs.appendFileSync('Errores.txt', resultado);
   }
 };
@@ -42,7 +40,7 @@ const getTokenCode = (token: Token): string => {
 };
 
 const getTokenLexem = (token: Token): string => {
-  return token.atributo.cadena ? token.atributo.cadena : '';
+  return token.atributo ? (token.atributo.cadena ? token.atributo.cadena : '') : '';
 };
 
 const writeTokenOnLog = (token: Token) => {
