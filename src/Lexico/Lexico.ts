@@ -159,18 +159,19 @@ const logicaAutomata = (): Token => {
         pila = pila + caracter;
         changeState(16);
       } else {
+        const lexema = pila;
         changeState(0);
         antiIgnore = true;
-        if (reservadas.includes(pila)) {
+        if (reservadas.includes(lexema)) {
           return {
             codigo: 'RESERVADA',
-            atributo: { cadena: pila },
+            atributo: { cadena: lexema },
             posicion: { linea: linea, columna: columna - pila.length },
           };
         } else {
           return {
             codigo: 'ID',
-            atributo: { nombre: pila, numero: 0 },
+            atributo: { nombre: lexema, numero: 0 },
             posicion: { linea: linea, columna: columna - pila.length },
           };
         }
