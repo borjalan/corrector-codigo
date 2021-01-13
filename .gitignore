@@ -8,6 +8,7 @@
 
 # production
 /build
+/outputs
 
 # Conversores
 /src/Conversores/Outputs
