@@ -14,7 +14,7 @@ try {
   if (fs.existsSync(file)) {
     main(file, flags);
   } else {
-    throw { message: 'El archivo pasado como parámetro no existe' };
+    throw { message: 'El archivo pasado como parámetro no existe: ' + file };
   }
 } catch (error) {
   if (error.message) {

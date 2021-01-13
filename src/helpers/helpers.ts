@@ -52,7 +52,7 @@ const writeTokenOnLog = (token: Token) => {
 };
 
 const consolaToken = (token: Token) => {
-  if (process.argv.includes('-t')) {
+  if (process.argv.includes('-lex')) {
     console.log(chalk.bgGreen(token));
   }
 };

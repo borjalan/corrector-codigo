@@ -1,8 +1,9 @@
 import { reglas, actionsGoto } from '../Assets/Params';
+import { errorHandlerSintax } from '../Errors/ErrorsHandler';
 import { Token } from '../Types/Types';
 
 let pilaSintactico: Array<string> = ['$', '0'];
-let parsedTokens: Array<Token>;
+// let parsedTokens: Array<Token>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
@@ -11,7 +12,7 @@ const parse = (token: Token): string => {
   const columnaAcciones: number = obtenerColumnaAcciones(token);
   const accion: string = actionsGoto[estadoActual][columnaAcciones];
 
-  parsedTokens.push(token);
+  // parsedTokens.push(token);
 
   if (esDesplazamiento(accion)) {
     const desplazamiento: number = valorNum(accion);
@@ -30,68 +31,12 @@ const parse = (token: Token): string => {
   } else if (esAceptar(accion)) {
     return 'Finalizado';
   } else {
-    // Tratamiento errores
+    errorHandlerSintax(estadoActual, columnaAcciones, token);
     return 'Error';
   }
 };
 
 // --------------------------------------------- Funciones privadas ---------------------------------------------
-
-const getColumnaRegla = (numRegla: number): number => {
-  const letraRegla: string = reglas[numRegla][0];
-  switch (letraRegla) {
-    case 'Z':
-      return 26;
-    case 'A':
-      return 27;
-    case 'B':
-      return 28;
-    case 'C':
-      return 29;
-    case 'D':
-      return 30;
-    case 'E':
-      return 31;
-    case 'F':
-      return 32;
-    case 'G':
-      return 33;
-    case 'H':
-      return 34;
-    case 'I':
-      return 35;
-    case 'J':
-      return 36;
-    case 'K':
-      return 37;
-    case 'L':
-      return 38;
-    case 'M':
-      return 39;
-    case 'N':
-      return 40;
-    case 'O':
-      return 41;
-    case 'P':
-      return 42;
-    case 'Q':
-      return 43;
-    case 'R':
-      return 44;
-    case 'S':
-      return 45;
-    case 'T':
-      return 46;
-    case 'U':
-      return 47;
-    case 'V':
-      return 48;
-    case 'W':
-      return 49;
-    default:
-      return 0;
-  }
-};
 
 const obtenerEstadoActual = (): number => {
   return parseInt(pilaSintactico[pilaSintactico.length - 1]);
@@ -102,7 +47,7 @@ const obtenerColumnaAcciones = (token: Token): number => {
   const lexema = token.atributo && token.atributo.cadena;
   // TODO Añadir nuevas reservadas
   switch (true) {
-    case codigo == 'RESERVADA' && lexema == 'var':
+    case codigo == 'RESERVADA' && lexema == 'let':
       return 0;
     case codigo == 'ID':
       return 1;
@@ -128,7 +73,7 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 11;
     case codigo == 'OP_ASIGCRES':
       return 12;
-    case codigo == 'RESERVADA' && lexema == 'print':
+    case codigo == 'RESERVADA' && lexema == 'alert':
       return 13;
     case codigo == 'RESERVADA' && lexema == 'input':
       return 14;
@@ -136,26 +81,92 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 15;
     case codigo == 'RESERVADA' && lexema == 'string':
       return 16;
-    case codigo == 'RESERVADA' && lexema == 'int':
+    case codigo == 'RESERVADA' && lexema == 'number':
       return 17;
     case codigo == 'RESERVADA' && lexema == 'bool':
       return 18;
-    case codigo == 'COMA':
-      return 19;
-    case codigo == 'OP_NEG':
-      return 20;
-    case codigo == 'OP_MAY':
-      return 21;
     case codigo == 'NUM':
-      return 22;
-    case codigo == 'OP_SUM':
-      return 23;
+      return 19;
     case codigo == 'CADENA':
+      return 20;
+    case codigo == 'COMA':
+      return 21;
+    case codigo == 'OP_NEG':
+      return 22;
+    case codigo == 'OP_MAY':
+      return 23;
+    case codigo == 'RESERVADA' && lexema == 'true':
       return 24;
+    case codigo == 'RESERVADA' && lexema == 'false':
+      return 25;
+    case codigo == 'OP_SUM':
+      return 26;
     case codigo == 'FINAL':
-      return 25;
+      return 27;
     default:
-      return 25;
+      return 27;
+  }
+};
+
+const getColumnaRegla = (numRegla: number): number => {
+  const letraRegla: string = reglas[numRegla][0];
+  switch (letraRegla) {
+    case 'Z':
+      return 28;
+    case 'Y':
+      return 29;
+    case 'A':
+      return 30;
+    case 'B':
+      return 31;
+    case 'C':
+      return 32;
+    case 'D':
+      return 33;
+    case 'E':
+      return 34;
+    case 'F':
+      return 35;
+    case 'G':
+      return 36;
+    case 'H':
+      return 37;
+    case 'I':
+      return 38;
+    case 'J':
+      return 39;
+    case 'K':
+      return 40;
+    case 'L':
+      return 41;
+    case 'M':
+      return 42;
+    case 'N':
+      return 43;
+    case 'O':
+      return 44;
+    case 'P':
+      return 45;
+    case 'Q':
+      return 46;
+    case 'R':
+      return 47;
+    case 'S':
+      return 48;
+    case "S'":
+      return 49;
+    case "U'":
+      return 50;
+    case 'U':
+      return 51;
+    case 'V':
+      return 52;
+    case 'W':
+      return 53;
+    case 'T':
+      return 54;
+    default:
+      return 0;
   }
 };
 

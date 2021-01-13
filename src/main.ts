@@ -1,3 +1,10 @@
+import * as Lexico from './Lexico/Lexico';
+import * as Sintactico from './Sintactico/Sintactico';
+
+// Typos
+import { Token } from './Types/Types';
+
+// Helpers
 import {
   limpiarLogsAntiguos,
   crearLogsNuevos,
@@ -5,9 +12,6 @@ import {
   writeTokenOnLog,
   escribirParse,
 } from './Helpers/Helpers';
-import * as Lexico from './Lexico/Lexico';
-import * as Sintactico from './Sintactico/Sintactico';
-import { Token } from './Types/Types';
 
 /*----------------------------------------------------------------------------------------------------
                                                 Main
