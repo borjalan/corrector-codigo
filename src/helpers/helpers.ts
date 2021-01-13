@@ -1,6 +1,6 @@
 // Librerias
 import * as fs from 'fs';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 // Tipos
 import { Token } from '../Types/Types';
@@ -14,23 +14,23 @@ const eraseFileIfExist = (file: fs.PathLike) => {
 };
 
 const limpiarLogsAntiguos = () => {
-  eraseFileIfExist('Tokens.txt');
-  eraseFileIfExist('Errores.txt');
-  eraseFileIfExist('TablaSimbolos.txt');
-  eraseFileIfExist('Parse.txt');
+  eraseFileIfExist('outputs/Tokens.txt');
+  eraseFileIfExist('outputs/Errores.txt');
+  eraseFileIfExist('outputs/TablaSimbolos.txt');
+  eraseFileIfExist('outputs/Parse.txt');
 };
 
 const crearLogsNuevos = () => {
-  fs.writeFileSync('Tokens.txt', '');
-  fs.writeFileSync('Errores.txt', '');
-  fs.writeFileSync('TablaSimbolos.txt', '');
-  fs.writeFileSync('Parse.txt', '');
-  fs.appendFileSync('Parse.txt', 'Ascendente ');
+  fs.writeFileSync('outputs/Tokens.txt', '');
+  fs.writeFileSync('outputs/Errores.txt', '');
+  fs.writeFileSync('outputs/TablaSimbolos.txt', '');
+  fs.writeFileSync('outputs/Parse.txt', '');
+  fs.appendFileSync('outputs/Parse.txt', 'Ascendente ');
 };
 
 const escribirParse = (resultado: string): void => {
   if (resultado != ('Desplazado' || 'Finalizado' || 'Error')) {
-    fs.appendFileSync('Errores.txt', resultado);
+    fs.appendFileSync('outputs/Errores.txt', resultado);
   }
 };
 
@@ -47,7 +47,7 @@ const writeTokenOnLog = (token: Token) => {
   var codigo = getTokenCode(token);
   var lexema = getTokenLexem(token);
   if (codigo != 'FINAL') {
-    fs.appendFileSync('Tokens.txt', '<' + codigo + ',' + lexema + '>\n');
+    fs.appendFileSync('outputs/Tokens.txt', '<' + codigo + ',' + lexema + '>\n');
   }
 };
 

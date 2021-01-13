@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test 1",
+      "program": "${workspaceFolder}/build/index.js",
+      "args": ["__test__/prueba1.test.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test 2",
+      "program": "${workspaceFolder}/build/index.js",
+      "args": ["__test__/prueba2.test.js"]
+    },
+  ]
+}

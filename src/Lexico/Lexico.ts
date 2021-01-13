@@ -1,6 +1,6 @@
 // Librerías
 import * as fs from 'fs';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 // Tipos
 import { Token } from '../Types/Types';
@@ -101,7 +101,7 @@ const logicaAutomata = (): Token => {
         changeState(0);
         antiIgnore = true;
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +
@@ -142,7 +142,7 @@ const logicaAutomata = (): Token => {
       } else if (caracter == '\n' || caracter == '\r' || caracter == '\t') {
         changeState(0);
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +
@@ -188,7 +188,7 @@ const logicaAutomata = (): Token => {
         changeState(0);
         antiIgnore = true;
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +
@@ -315,7 +315,7 @@ const baseCaseCheck = (): Token | undefined => {
         punteroChar++;
         antiIgnore = true;
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +
@@ -341,7 +341,7 @@ const checkfinal = (): Token | undefined => {
     switch (estado) {
       case 1 | 2 | 3:
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +
@@ -351,7 +351,7 @@ const checkfinal = (): Token | undefined => {
         break;
       case 4:
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +
@@ -368,7 +368,7 @@ const checkfinal = (): Token | undefined => {
         break;
       case 19:
         fs.appendFileSync(
-          'Errores.txt',
+          'outputs/Errores.txt',
           '[ERROR LÉXICO](Linea: ' +
             linea +
             ', Columna: ' +

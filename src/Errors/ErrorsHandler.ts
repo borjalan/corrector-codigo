@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 // Types
 import { Token } from '../Types/Types';
@@ -20,6 +20,6 @@ export const errorHandlerSintax = (filaAccion: number, columnaAccion: number, to
     if (process.argv.includes('-sin')) {
       console.log(chalk.bgYellow(error));
     }
-    fs.appendFileSync('Errores.txt', error);
+    fs.appendFileSync('outputs/Errores.txt', error);
   }
 };

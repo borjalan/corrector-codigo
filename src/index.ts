@@ -1,5 +1,5 @@
-import * as chalk from 'chalk';
 import * as fs from 'fs';
+import chalk from 'chalk';
 import main from './main';
 
 const flags: boolean[] = [
@@ -18,7 +18,7 @@ try {
   }
 } catch (error) {
   if (error.message) {
-    console.log(chalk.bgRed(error.message));
+    console.log(chalk.bgRed.black.bold(error.message));
   } else {
     console.log(chalk.red(error));
   }
