@@ -79,15 +79,14 @@ const logicaAutomata = (): Token => {
   auxTok = checkfinal();
   if (auxTok) return auxTok;
 
+  if (antiIgnore) {
+    punteroChar--;
+    antiIgnore = false;
+  }
+
   caracter = caracteres[punteroChar][0];
   linea = caracteres[punteroChar][1];
   columna = caracteres[punteroChar][2];
-
-  if (antiIgnore) {
-    punteroChar--;
-    caracter = caracteres[punteroChar][0];
-    antiIgnore = false;
-  }
 
   switch (estado) {
     case 0:
@@ -171,7 +170,7 @@ const logicaAutomata = (): Token => {
         } else {
           return {
             codigo: 'ID',
-            atributo: { nombre: lexema, numero: 0 },
+            atributo: { nombre: lexema, cadena: lexema, numero: 0 },
             posicion: { linea: linea, columna: columna - pila.length },
           };
         }
@@ -333,12 +332,12 @@ const baseCaseCheck = (): Token | undefined => {
 const changeState = (newState: number): void => {
   estado = newState;
   punteroChar++;
-  if (newState == 0) pila = caracteres[punteroChar][0];
+  if (newState == 0) pila = '';
 };
 
 const checkfinal = (): Token | undefined => {
   let resultado: Token = { codigo: 'FINAL', atributo: { cadena: 'FINAL' } };
-  if (punteroChar >= caracteres.length - 1) {
+  if (punteroChar > caracteres.length - 1) {
     switch (estado) {
       case 1 | 2 | 3:
         fs.appendFileSync(

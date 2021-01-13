@@ -44,15 +44,16 @@ const getTokenLexem = (token: Token): string => {
 };
 
 const writeTokenOnLog = (token: Token) => {
-  var codigo = getTokenCode(token);
-  var lexema = getTokenLexem(token);
+  let codigo = getTokenCode(token);
+  let lexema = getTokenLexem(token);
   if (codigo != 'FINAL') {
     fs.appendFileSync('outputs/Tokens.txt', '<' + codigo + ',' + lexema + '>\n');
   }
 };
 
 const consolaToken = (token: Token) => {
-  if (process.argv.includes('-lex')) {
+  let codigo = getTokenCode(token);
+  if (process.argv.includes('-lex') && codigo != 'FINAL') {
     console.log(chalk.bgGreen(JSON.stringify(token)));
   }
 };
