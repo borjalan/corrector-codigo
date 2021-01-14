@@ -1,0 +1,71 @@
+Z -> Y
+Y -> ''
+Y -> A Y
+Y -> J Y
+A -> B A
+A -> C A
+A -> D A
+A -> E A
+A -> F A
+A -> G A
+A -> H A
+A -> I A
+A -> K A
+A -> ''
+B -> let M id O ;
+C -> do { A } while ( S ) ;
+D -> if ( S ) R
+E -> return U' ;
+F -> id = U ;
+F -> id %= U ;
+G -> id ( N ) ;
+H -> alert ( U ) ;
+I -> input ( id ) ;
+J -> function L id ( P ) { A }
+K -> let M id = U ;
+L -> ''
+L -> M
+M -> string
+M -> number
+M -> bool
+N -> ''
+N -> id O
+N -> cte_num O
+N -> cte_cad O
+O -> , id O
+O -> ''
+O -> , cte_num O
+O -> , cte_cad O
+P -> ''
+P -> M id Q
+Q -> , M id Q
+Q -> ''
+R -> C
+R -> D
+R -> E
+R -> F
+R -> G
+R -> H
+R -> I
+S -> ! id
+S -> id > id
+S -> id > cte_num
+S -> cte_num > cte_num
+S -> cte_num > id
+S -> id
+S -> true
+S -> false
+S' -> ! id
+S' -> T > T
+S' -> true 
+S' -> false
+U' -> ''
+U' -> U
+U -> S'
+U -> V
+V -> W + V
+V -> W
+W -> cte_cad
+W -> T
+T -> id
+T -> cte_num

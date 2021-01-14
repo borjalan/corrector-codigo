@@ -29,8 +29,8 @@ const crearLogsNuevos = () => {
 };
 
 const escribirParse = (resultado: string): void => {
-  if (resultado != ('Desplazado' || 'Finalizado' || 'Error')) {
-    fs.appendFileSync('outputs/Errores.txt', resultado);
+  if (resultado !== ('Desplazado' || 'Finalizado' || 'Error')) {
+    fs.appendFileSync('outputs/Parse.txt', ' ' + resultado);
   }
 };
 

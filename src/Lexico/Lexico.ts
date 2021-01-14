@@ -221,7 +221,16 @@ const logicaAutomata = (): Token => {
 
 const baseCaseCheck = (): Token | undefined => {
   switch (caracter) {
-    case '\n' || '\t' || '\r' || ' ':
+    case '\n':
+      changeState(0);
+      break;
+    case '\t':
+      changeState(0);
+      break;
+    case '\r':
+      changeState(0);
+      break;
+    case ' ':
       changeState(0);
       break;
     case '+':
