@@ -4,6 +4,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Convertir Gram",
+      "program": "${workspaceFolder}/build/Conversores/conversorGram.js",
+      "preLaunchTask": "npm: build",
+      "args": ["${workspaceFolder}/src/Conversores/Gramática.txt"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Test 1",
       "program": "${workspaceFolder}/build/index.js",
       "preLaunchTask": "npm: build",
