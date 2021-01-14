@@ -1,17 +1,16 @@
 Z -> Y
-Y -> ''
 Y -> A Y
 Y -> J Y
-A -> B A
-A -> C A
-A -> D A
-A -> E A
-A -> F A
-A -> G A
-A -> H A
-A -> I A
-A -> K A
-A -> ''
+Y -> ''
+A -> B 
+A -> C 
+A -> D 
+A -> E 
+A -> F 
+A -> G 
+A -> H 
+A -> I 
+A -> K 
 B -> let M id O ;
 C -> do { A } while ( S ) ;
 D -> if ( S ) R
@@ -69,3 +68,4 @@ W -> cte_cad
 W -> T
 T -> id
 T -> cte_num
+
