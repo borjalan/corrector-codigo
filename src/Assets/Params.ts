@@ -235,5 +235,143 @@ export const actionsGoto: Array<string[]> =
     ["    ","    ","    ","    ","    ","    ","    ","    ","r39" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "]
   ];
 export const erroresSintactico: Array<string[]>=[
-  [''],
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input, function o el fin del fichero'], //0 
+  ['Se esperaba el fin del fichero'], //1
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input, function o el fin del fichero'], //2 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input, function o el fin del fichero'], //3 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //4
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //5
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //6
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //7
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //8
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //9
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //10
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //11
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //12
+  ['Se esperaba uno de los siguientes Tokens: id, string, number, bool'], //13
+  ['Se esperaba uno de los siguientes Tokens: string, number, bool'], //14
+  ['Se esperaba uno de los siguientes Tokens: {'], //15
+  ['Se esperaba uno de los siguientes Tokens: ('], //16
+  ['Se esperaba uno de los siguientes Tokens: id, ; , constante numerica, constante cadena, !, true, false'], //17
+  ['Se esperaba uno de los siguientes Tokens: (, =, %='], //18
+  ['Se esperaba uno de los siguientes Tokens: ('], //19
+  ['Se esperaba uno de los siguientes Tokens: ('], //20
+  ['Se esperaba el fin del fichero '], //21 
+  ['Se esperaba el fin del fichero '], //22 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //23 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //24 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //25 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //26 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //27 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //28 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //29 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //30 
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //31 
+  ['Se esperaba uno de los siguientes Tokens: id'], //32
+  ['Se esperaba uno de los siguientes Tokens: id'], //33
+  ['Se esperaba uno de los siguientes Tokens: id'], //34
+  ['Se esperaba uno de los siguientes Tokens: id'], //35
+  ['Se esperaba uno de los siguientes Tokens: id'], //36
+  ['Se esperaba uno de los siguientes Tokens: id'], //37
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //38
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, !, true, false'], //39
+  ['Se esperaba uno de los siguientes Tokens: ;'], //40
+  ['Se esperaba uno de los siguientes Tokens: ;'], //41
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //42
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //43
+  ['Se esperaba uno de los siguientes Tokens: id'], //44
+  ['Se esperaba uno de los siguientes Tokens: ;, ), >, +'], //45
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //46
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //47
+  ['Se esperaba uno de los siguientes Tokens: ;, ), +'], //48
+  ['Se esperaba uno de los siguientes Tokens: ;, ), >, +'], //49
+  ['Se esperaba uno de los siguientes Tokens: ;, ), >, +'], //50
+  ['Se esperaba uno de los siguientes Tokens: ;, ), +'], //51
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena, !, true, false'], //52
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena, !, true, false'], //53
+  ['Se esperaba uno de los siguientes Tokens: id, ), constante numerica, constante cadena'], //54
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena, !, true, false'], //55 
+  ['Se esperaba uno de los siguientes Tokens: id'], //56
+  ['Se esperaba uno de los siguientes Tokens: ('], //57
+  ['Se esperaba uno de los siguientes Tokens: ;, ), =, ,'], //58
+  ['Se esperaba uno de los siguientes Tokens: }'], //59
+  ['Se esperaba uno de los siguientes Tokens: )'], //60
+  ['Se esperaba uno de los siguientes Tokens: id'], //61
+  ['Se esperaba uno de los siguientes Tokens: ), >'], //62
+  ['Se esperaba uno de los siguientes Tokens: >'], //63
+  ['Se esperaba uno de los siguientes Tokens: )'], //64
+  ['Se esperaba uno de los siguientes Tokens: )'], //65
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //66
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //67
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica'], //68
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena'], //69
+  ['Se esperaba uno de los siguientes Tokens: ;'], //70
+  ['Se esperaba uno de los siguientes Tokens: ;'], //71
+  ['Se esperaba uno de los siguientes Tokens: )'], //72
+  ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //73
+  ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //74
+  ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //75
+  ['Se esperaba uno de los siguientes Tokens: )'], //76
+  ['Se esperaba uno de los siguientes Tokens: )'], //77
+  ['Se esperaba uno de los siguientes Tokens: ), string, number, bool'], //78
+  ['Se esperaba uno de los siguientes Tokens: ;'], //79
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena, !, true, false'], //80
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena'], //81
+  ['Se esperaba uno de los siguientes Tokens: while'], //82
+  ['Se esperaba uno de los siguientes Tokens: id, do, if, return, alert, input'], //83
+  ['Se esperaba uno de los siguientes Tokens: )'], //84
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica'], //85
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica'], //86
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //87
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //88
+  ['Se esperaba uno de los siguientes Tokens: ;, ), +'], //89
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //90
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //91
+  ['Se esperaba uno de los siguientes Tokens: ;'], //92
+  ['Se esperaba uno de los siguientes Tokens: )'], //93
+  ['Se esperaba uno de los siguientes Tokens: )'], //94
+  ['Se esperaba uno de los siguientes Tokens: )'], //95
+  ['Se esperaba uno de los siguientes Tokens: ;'], //96
+  ['Se esperaba uno de los siguientes Tokens: ;'], //97
+  ['Se esperaba uno de los siguientes Tokens: )'], //98
+  ['Se esperaba uno de los siguientes Tokens: id'], //99
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //100
+  ['Se esperaba uno de los siguientes Tokens: ;'], //101
+  ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //102
+  ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //103
+  ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //104
+  ['Se esperaba uno de los siguientes Tokens: ('], //105
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //106
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //107
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //108
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //109
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //110
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //111
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //112
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //113
+  ['Se esperaba uno de los siguientes Tokens: )'], //114
+  ['Se esperaba uno de los siguientes Tokens: )'], //115
+  ['Se esperaba uno de los siguientes Tokens: )'], //116
+  ['Se esperaba uno de los siguientes Tokens: )'], //117
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //118
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //119
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //120
+  ['Se esperaba uno de los siguientes Tokens: {'], //121
+  ['Se esperaba uno de los siguientes Tokens: ), ,'], //122
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //123
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //124
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //125
+  ['Se esperaba uno de los siguientes Tokens: ;, )'], //126
+  ['Se esperaba uno de los siguientes Tokens: id, constante numerica, !, true, false'], //127
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input,'], //128
+  ['Se esperaba uno de los siguientes Tokens: )'], //129
+  ['Se esperaba uno de los siguientes Tokens: string, number, bool'], //130
+  ['Se esperaba uno de los siguientes Tokens: )'], //131
+  ['Se esperaba uno de los siguientes Tokens: }'], //132
+  ['Se esperaba uno de los siguientes Tokens: id'], //133
+  ['Se esperaba uno de los siguientes Tokens: ;'], //134
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input, function o el fin del fichero'], //135 
+  ['Se esperaba uno de los siguientes Tokens: ), ,'], //136
+  ['Se esperaba uno de los siguientes Tokens: let, id, do, if, return, alert, input'], //137
+  ['Se esperaba uno de los siguientes Tokens: )'], //138
   ]; 

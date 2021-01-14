@@ -14,7 +14,9 @@ export const errorHandlerSintax = (filaAccion: number, columnaAccion: number, to
       token.posicion.linea +
       ', Columna: ' +
       token.posicion.columna +
-      ") '" +
+      ") - No se esperaba el token: " + 
+      token.codigo +
+      " , "
       erroresSintactico[0] +
       '\n';
     if (process.argv.includes('-sin')) {
