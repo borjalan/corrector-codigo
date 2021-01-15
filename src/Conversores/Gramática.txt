@@ -11,8 +11,10 @@ A -> G
 A -> H 
 A -> I 
 A -> K 
+A' -> A A'
+A' -> ''
 B -> let M id O ;
-C -> do { A } while ( S ) ;
+C -> do { A' } while ( S ) ;
 D -> if ( S ) R
 E -> return U' ;
 F -> id = U ;
@@ -20,7 +22,7 @@ F -> id %= U ;
 G -> id ( N ) ;
 H -> alert ( U ) ;
 I -> input ( id ) ;
-J -> function L id ( P ) { A }
+J -> function L id ( P ) { A' }
 K -> let M id = U ;
 L -> ''
 L -> M
@@ -68,4 +70,3 @@ W -> cte_cad
 W -> T
 T -> id
 T -> cte_num
-
