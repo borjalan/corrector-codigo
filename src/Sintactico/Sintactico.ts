@@ -30,7 +30,7 @@ const parse = (token: Token): string => {
   } else if (esAceptar(accion)) {
     return 'Finalizado';
   } else {
-    errorHandlerSintax(estadoActual, columnaAcciones, token);
+    errorHandlerSintax(estadoActual, token);
     return 'Error';
   }
 };
