@@ -7,5 +7,5 @@ Lorem Ipsum Impsum Lorem
 - [ ] Semántico
 - [ ] Tabla Símbolos
 - [x] Errores Léxico
-- [ ] Errores Sintáctico
+- [x] Errores Sintáctico
 - [ ] Errores Semántico
