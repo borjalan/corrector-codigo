@@ -3,7 +3,6 @@ import { errorHandlerSintax } from '../Errors/ErrorsHandler';
 import { Token } from '../Types/Types';
 
 let pilaSintactico: Array<string> = ['$', '0'];
-// let parsedTokens: Array<Token>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
@@ -45,7 +44,7 @@ const obtenerEstadoActual = (): number => {
 const obtenerColumnaAcciones = (token: Token): number => {
   const codigo = token.codigo;
   const lexema = token.atributo && token.atributo.cadena;
-  // TODO Añadir nuevas reservadas
+  
   switch (true) {
     case codigo == 'RESERVADA' && lexema == 'let':
       return 0;
