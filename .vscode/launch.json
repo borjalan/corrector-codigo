@@ -20,17 +20,17 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Test 1",
+      "name": "Test 01",
       "program": "${workspaceFolder}/build/index.js",
       "preLaunchTask": "npm: build",
-      "args": ["__test__/prueba1.test.js", "-lex", "-sin", "-sem"]
+      "args": ["__test__/prueba01.test.js", "-lex", "-sin", "-sem"]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Test 2",
+      "name": "Test 02",
       "program": "${workspaceFolder}/build/index.js",
-      "args": ["__test__/prueba2.test.js", "-lex", "-sin", "-sem"]
+      "args": ["__test__/prueba02.test.js", "-lex", "-sin", "-sem"]
     }
   ]
 }
