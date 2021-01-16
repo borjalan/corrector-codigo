@@ -1,104 +1,75 @@
-/*----------------------------------------------------------------------------------------------------
-                                            Parámetros
-  ----------------------------------------------------------------------------------------------------*/
-export const reservadas: Array<string> =
-  // Este array contiene todas las palabras reservadas de js
-  [
-    'alert',
-    'bool',
-    'do',
-    'false',
-    'function',
-    'if',
-    'input',
-    'let',
-    'number',
-    'return',
-    'string',
-    'true',
-    'while',
-  ];
-  export const reglas = 
-  [
-   ["Z","Y"],                              //0
-   ["Y","A Y"],                            //1
-   ["Y","J Y"],                            //2
-   ["Y","λ"],                              //3
-   ["A","B "],                             //4
-   ["A","C "],                             //5
-   ["A","D "],                             //6
-   ["A","E "],                             //7
-   ["A","F "],                             //8
-   ["A","G "],                             //9
-   ["A","H "],                             //10
-   ["A","I "],                             //11
-   ["A","K "],                             //12
-   ["A'","A A'"],                          //13
-   ["A'","λ"],                             //14
-   ["B","let M id O ;"],                   //15
-   ["C","do { A' } while ( S ) ;"],        //16
-   ["D","if ( S ) R"],                     //17
-   ["E","return U' ;"],                    //18
-   ["F","id = U ;"],                       //19
-   ["F","id %= U ;"],                      //20
-   ["G","id ( N ) ;"],                     //21
-   ["H","alert ( U ) ;"],                  //22
-   ["I","input ( id ) ;"],                 //23
-   ["J","function L id ( P ) { A' }"],     //24
-   ["K","let M id = U ;"],                 //25
-   ["L","λ"],                              //26
-   ["L","M"],                              //27
-   ["M","string"],                         //28
-   ["M","number"],                         //29
-   ["M","bool"],                           //30
-   ["N","λ"],                              //31
-   ["N","id O"],                           //32
-   ["N","cte_num O"],                      //33
-   ["N","cte_cad O"],                      //34
-   ["O",", id O"],                         //35
-   ["O","λ"],                              //36
-   ["O",", cte_num O"],                    //37
-   ["O",", cte_cad O"],                    //38
-   ["P","λ"],                              //39
-   ["P","M id Q"],                         //40
-   ["Q",", M id Q"],                       //41
-   ["Q","λ"],                              //42
-   ["R","C"],                              //43
-   ["R","D"],                              //44
-   ["R","E"],                              //45
-   ["R","F"],                              //46
-   ["R","G"],                              //47
-   ["R","H"],                              //48
-   ["R","I"],                              //49
-   ["S","! id"],                           //50
-   ["S","id > id"],                        //51
-   ["S","id > cte_num"],                   //52
-   ["S","cte_num > cte_num"],              //53
-   ["S","cte_num > id"],                   //54
-   ["S","id"],                             //55
-   ["S","true"],                           //56
-   ["S","false"],                          //57
-   ["S'","! id"],                          //58
-   ["S'","T > T"],                         //59
-   ["S'","true "],                         //60
-   ["S'","false"],                         //61
-   ["U'","λ"],                             //62
-   ["U'","U"],                             //63
-   ["U","S'"],                             //64
-   ["U","V"],                              //65
-   ["V","W + V"],                          //66
-   ["V","W"],                              //67
-   ["W","cte_cad"],                        //68
-   ["W","T"],                              //69
-   ["T","id"],                             //70
-   ["T","cte_num"]                        //71
-  ];
-export const actionsGoto: Array<string[]> =
-  // Matriz combinada actions + goto
-  [ 
-  //let    id     ;      do     {      }     while   (      )      if    return  =%     =     alert  input function string number bool cte_num cte_cad  ,      !      >     true   false    +     $     Z      Y      A      A'     B      C      D      E      F      G      H      I      J      K      L      M      N      O      P      Q      R      S      S'     U'     U      V      W       T
+
+<!-- saved from url=(0051)http://jsmachines.sourceforge.net/machines/slr.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SLR Parser Generator</title>
+<style>
+body { background-color: #F0F0F0; }
+body * { font-family:courier; }
+td { horizontal-align: middle; vertical-align: top; white-space: nowrap; }
+th { white-space: nowrap; }
+</style>
+<script language="javascript" src="./SLR Parser Generator_files/underscore.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/tools.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/grammar.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/grammarview.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/slritem.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/lrclosuretable.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/lrclosuretableview.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/tree.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/treeview.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/lrtable.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/lrtableview.js.descarga"></script>
+<script language="javascript" src="./SLR Parser Generator_files/lrparseview.js.descarga"></script>
+</head>
+<body>
+<script language="javascript">
+<!--
+
+var lrTable;
+
+function grammarChanged() {
+	displayRuleIndices();
+	
+	var grammar = new Grammar($element('grammar').value);
+	var lrClosureTable = new LRClosureTable(grammar);
+	lrTable = new LRTable(lrClosureTable);
+
+	$element('firstFollowView').innerHTML = formatFirstFollow(grammar);
+	$element('lrClosureTableView').innerHTML = formatLRClosureTable(lrClosureTable);
+	$element('lrTableView').innerHTML = formatLRTable(lrTable);
+	
+	parseInput();
+}
+
+// -->
+</script>
+<table>[
+  ["
+	<div id="grammarView"><div>SLR grammar ('' is &#949;):</div><table>[
+  ["<textarea style="text-align: right; border: 0px; color: green; background-color: rgb(240, 240, 240); margin: 0px; width: 64px; height: 612px;" id="ruleIndices" rows="25"   cols="3"    readonly="true"></textarea>","<textarea id="grammar" rows="25"   cols="20"   onfocus="$(&#39;ruleIndices&#39;).value = &#39;&#39;" onblur="displayRuleIndices();" onchange="grammarChanged();" style="margin: 0px; width: 690px; height: 615px;">E' -&gt; E
+E -&gt; E + T
+E -&gt; T
+T -&gt; T * F
+T -&gt; F
+F -&gt; ( E )
+F -&gt; id
+</textarea>"],]</table></div>
+	<br>
+	<div id="firstFollowView"><table border="1"   ><thead>  [<th colspan="3"   >FIRST / FOLLOW table</th>],  [<th>Nonterminal</th><th>FIRST</th><th>FOLLOW</th>],</thead>[
+  ["Z","{'',function,let,do,if,return,id,alert,input}","{$}"],  ["Y","{'',function,let,do,if,return,id,alert,input}","{$}"],  ["A","{let,do,if,return,id,alert,input}","{$,function,let,do,if,return,id,alert,input,}}"],  ["A'","{'',let,do,if,return,id,alert,input}","{}}"],  ["B","{let}","{$,function,let,do,if,return,id,alert,input,}}"],  ["C","{do}","{$,function,let,do,if,return,id,alert,input,}}"],  ["D","{if}","{$,function,let,do,if,return,id,alert,input,}}"],  ["E","{return}","{$,function,let,do,if,return,id,alert,input,}}"],  ["F","{id}","{$,function,let,do,if,return,id,alert,input,}}"],  ["G","{id}","{$,function,let,do,if,return,id,alert,input,}}"],  ["H","{alert}","{$,function,let,do,if,return,id,alert,input,}}"],  ["I","{input}","{$,function,let,do,if,return,id,alert,input,}}"],  ["J","{function}","{$,function,let,do,if,return,id,alert,input}"],  ["K","{let}","{$,function,let,do,if,return,id,alert,input,}}"],  ["L","{'',string,number,bool}","{id}"],  ["M","{string,number,bool}","{id}"],  ["N","{'',id,cte_num,cte_cad}","{)}"],  ["O","{,,''}","{;,)}"],  ["P","{'',string,number,bool}","{)}"],  ["Q","{,,''}","{)}"],  ["R","{do,if,return,id,alert,input}","{$,function,let,do,if,return,id,alert,input,}}"],  ["S","{!,id,cte_num,true,false}","{)}"],  ["S'","{!,true,false,id,cte_num}","{;,)}"],  ["U'","{'',!,true,false,id,cte_num,cte_cad}","{;}"],  ["U","{!,true,false,id,cte_num,cte_cad}","{;,)}"],  ["V","{cte_cad,id,cte_num}","{;,)}"],  ["W","{cte_cad,id,cte_num}","{+,;,)}"],  ["T","{id,cte_num}","{&gt;,+,;,)}"],]</table></div>
+","
+	<br>
+	<input type="button" value="&gt;&gt;">
+","
+	<div style="height: 100%; overflow: auto;">
+		<div id="lrClosureTableView"><table border="1"   ><thead>  [<th colspan="4"   >SLR closure table</th>],  [<th>Goto</th><th>Kernel</th><th>State</th><th>Closure</th>],</thead><tbody id="lrClosureTableRows">  ["","{Z -&gt; .Y}","{Z -&gt; .Y; Y -&gt; .A Y; Y -&gt; .J Y; Y -&gt; .; A -&gt; .B; A -&gt; .C; A -&gt; .D; A -&gt; .E; A -&gt; .F; A -&gt; .G; A -&gt; .H; A -&gt; .I; A -&gt; .K; J -&gt; .function L id ( P ) { A' }; B -&gt; .let M id O ;; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;; K -&gt; .let M id = U ;}"],  ["goto(0, Y)","{<span style="color: green;">Z -&gt; Y.}","{<span style="color: green;">Z -&gt; Y.}"],  ["goto(0, A)","{Y -&gt; A.Y}","{Y -&gt; A.Y; Y -&gt; .A Y; Y -&gt; .J Y; <span style="color: green;">Y -&gt; .; A -&gt; .B; A -&gt; .C; A -&gt; .D; A -&gt; .E; A -&gt; .F; A -&gt; .G; A -&gt; .H; A -&gt; .I; A -&gt; .K; J -&gt; .function L id ( P ) { A' }; B -&gt; .let M id O ;; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;; K -&gt; .let M id = U ;}"],  ["goto(0, J)","{Y -&gt; J.Y}","{Y -&gt; J.Y; Y -&gt; .A Y; Y -&gt; .J Y; <span style="color: green;">Y -&gt; .; A -&gt; .B; A -&gt; .C; A -&gt; .D; A -&gt; .E; A -&gt; .F; A -&gt; .G; A -&gt; .H; A -&gt; .I; A -&gt; .K; J -&gt; .function L id ( P ) { A' }; B -&gt; .let M id O ;; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;; K -&gt; .let M id = U ;}"],  ["goto(0, B)","{<span style="color: green;">A -&gt; B.}","{<span style="color: green;">A -&gt; B.}"],  ["goto(0, C)","{<span style="color: green;">A -&gt; C.}","{<span style="color: green;">A -&gt; C.}"],  ["goto(0, D)","{<span style="color: green;">A -&gt; D.}","{<span style="color: green;">A -&gt; D.}"],  ["goto(0, E)","{<span style="color: green;">A -&gt; E.}","{<span style="color: green;">A -&gt; E.}"],  ["goto(0, F)","{<span style="color: green;">A -&gt; F.}","{<span style="color: green;">A -&gt; F.}"],  ["goto(0, G)","{<span style="color: green;">A -&gt; G.}","{<span style="color: green;">A -&gt; G.}"],  ["goto(0, H)","{<span style="color: green;">A -&gt; H.}","{<span style="color: green;">A -&gt; H.}"],  ["goto(0, I)","{<span style="color: green;">A -&gt; I.}","{<span style="color: green;">A -&gt; I.}"],  ["goto(0, K)","{<span style="color: green;">A -&gt; K.}","{<span style="color: green;">A -&gt; K.}"],  ["goto(0, function)","{J -&gt; function.L id ( P ) { A' }}","{J -&gt; function.L id ( P ) { A' }; <span style="color: green;">L -&gt; .; L -&gt; .M; M -&gt; .string; M -&gt; .number; M -&gt; .bool}"],  ["goto(0, let)","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;}","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;; M -&gt; .string; M -&gt; .number; M -&gt; .bool}"],  ["goto(0, do)","{C -&gt; do.{ A' } while ( S ) ;}","{C -&gt; do.{ A' } while ( S ) ;}"],  ["goto(0, if)","{D -&gt; if.( S ) R}","{D -&gt; if.( S ) R}"],  ["goto(0, return)","{E -&gt; return.U' ;}","{E -&gt; return.U' ;; <span style="color: green;">U' -&gt; .; U' -&gt; .U; U -&gt; .S'; U -&gt; .V; S' -&gt; .! id; S' -&gt; .T &gt; T; S' -&gt; .true; S' -&gt; .false; V -&gt; .W + V; V -&gt; .W; T -&gt; .id; T -&gt; .cte_num; W -&gt; .cte_cad; W -&gt; .T}"],  ["goto(0, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}"],  ["goto(0, alert)","{H -&gt; alert.( U ) ;}","{H -&gt; alert.( U ) ;}"],  ["goto(0, input)","{I -&gt; input.( id ) ;}","{I -&gt; input.( id ) ;}"],  ["goto(2, Y)","{<span style="color: green;">Y -&gt; A Y.}","{<span style="color: green;">Y -&gt; A Y.}"],  ["goto(2, A)","{Y -&gt; A.Y}","    "],  ["goto(2, J)","{Y -&gt; J.Y}","    "],  ["goto(2, B)","{<span style="color: green;">A -&gt; B.}","    "],  ["goto(2, C)","{<span style="color: green;">A -&gt; C.}","    "],  ["goto(2, D)","{<span style="color: green;">A -&gt; D.}","    "],  ["goto(2, E)","{<span style="color: green;">A -&gt; E.}","    "],  ["goto(2, F)","{<span style="color: green;">A -&gt; F.}","    "],  ["goto(2, G)","{<span style="color: green;">A -&gt; G.}","    "],  ["goto(2, H)","{<span style="color: green;">A -&gt; H.}","    "],  ["goto(2, I)","{<span style="color: green;">A -&gt; I.}","    "],  ["goto(2, K)","{<span style="color: green;">A -&gt; K.}","    "],  ["goto(2, function)","{J -&gt; function.L id ( P ) { A' }}","    "],  ["goto(2, let)","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;}","    "],  ["goto(2, do)","{C -&gt; do.{ A' } while ( S ) ;}","    "],  ["goto(2, if)","{D -&gt; if.( S ) R}","    "],  ["goto(2, return)","{E -&gt; return.U' ;}","    "],  ["goto(2, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","    "],  ["goto(2, alert)","{H -&gt; alert.( U ) ;}","    "],  ["goto(2, input)","{I -&gt; input.( id ) ;}","    "],  ["goto(3, Y)","{<span style="color: green;">Y -&gt; J Y.}","{<span style="color: green;">Y -&gt; J Y.}"],  ["goto(3, A)","{Y -&gt; A.Y}","    "],  ["goto(3, J)","{Y -&gt; J.Y}","    "],  ["goto(3, B)","{<span style="color: green;">A -&gt; B.}","    "],  ["goto(3, C)","{<span style="color: green;">A -&gt; C.}","    "],  ["goto(3, D)","{<span style="color: green;">A -&gt; D.}","    "],  ["goto(3, E)","{<span style="color: green;">A -&gt; E.}","    "],  ["goto(3, F)","{<span style="color: green;">A -&gt; F.}","    "],  ["goto(3, G)","{<span style="color: green;">A -&gt; G.}","    "],  ["goto(3, H)","{<span style="color: green;">A -&gt; H.}","    "],  ["goto(3, I)","{<span style="color: green;">A -&gt; I.}","    "],  ["goto(3, K)","{<span style="color: green;">A -&gt; K.}","    "],  ["goto(3, function)","{J -&gt; function.L id ( P ) { A' }}","    "],  ["goto(3, let)","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;}","    "],  ["goto(3, do)","{C -&gt; do.{ A' } while ( S ) ;}","    "],  ["goto(3, if)","{D -&gt; if.( S ) R}","    "],  ["goto(3, return)","{E -&gt; return.U' ;}","    "],  ["goto(3, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","    "],  ["goto(3, alert)","{H -&gt; alert.( U ) ;}","    "],  ["goto(3, input)","{I -&gt; input.( id ) ;}","    "],  ["goto(13, L)","{J -&gt; function L.id ( P ) { A' }}","{J -&gt; function L.id ( P ) { A' }}"],  ["goto(13, M)","{<span style="color: green;">L -&gt; M.}","{<span style="color: green;">L -&gt; M.}"],  ["goto(13, string)","{<span style="color: green;">M -&gt; string.}","{<span style="color: green;">M -&gt; string.}"],  ["goto(13, number)","{<span style="color: green;">M -&gt; number.}","{<span style="color: green;">M -&gt; number.}"],  ["goto(13, bool)","{<span style="color: green;">M -&gt; bool.}","{<span style="color: green;">M -&gt; bool.}"],  ["goto(14, M)","{B -&gt; let M.id O ;; K -&gt; let M.id = U ;}","{B -&gt; let M.id O ;; K -&gt; let M.id = U ;}"],  ["goto(14, string)","{<span style="color: green;">M -&gt; string.}","    "],  ["goto(14, number)","{<span style="color: green;">M -&gt; number.}","    "],  ["goto(14, bool)","{<span style="color: green;">M -&gt; bool.}","    "],  ["goto(15, {)","{C -&gt; do {.A' } while ( S ) ;}","{C -&gt; do {.A' } while ( S ) ;; A' -&gt; .A A'; <span style="color: green;">A' -&gt; .; A -&gt; .B; A -&gt; .C; A -&gt; .D; A -&gt; .E; A -&gt; .F; A -&gt; .G; A -&gt; .H; A -&gt; .I; A -&gt; .K; B -&gt; .let M id O ;; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;; K -&gt; .let M id = U ;}"],  ["goto(16, ()","{D -&gt; if (.S ) R}","{D -&gt; if (.S ) R; S -&gt; .! id; S -&gt; .id &gt; id; S -&gt; .id &gt; cte_num; S -&gt; .cte_num &gt; cte_num; S -&gt; .cte_num &gt; id; S -&gt; .id; S -&gt; .true; S -&gt; .false}"],  ["goto(17, U')","{E -&gt; return U'.;}","{E -&gt; return U'.;}"],  ["goto(17, U)","{<span style="color: green;">U' -&gt; U.}","{<span style="color: green;">U' -&gt; U.}"],  ["goto(17, S')","{<span style="color: green;">U -&gt; S'.}","{<span style="color: green;">U -&gt; S'.}"],  ["goto(17, V)","{<span style="color: green;">U -&gt; V.}","{<span style="color: green;">U -&gt; V.}"],  ["goto(17, !)","{S' -&gt; !.id}","{S' -&gt; !.id}"],  ["goto(17, T)","{S' -&gt; T.&gt; T; <span style="color: green;">W -&gt; T.}","{S' -&gt; T.&gt; T; <span style="color: green;">W -&gt; T.}"],  ["goto(17, true)","{<span style="color: green;">S' -&gt; true.}","{<span style="color: green;">S' -&gt; true.}"],  ["goto(17, false)","{<span style="color: green;">S' -&gt; false.}","{<span style="color: green;">S' -&gt; false.}"],  ["goto(17, W)","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}"],  ["goto(17, id)","{<span style="color: green;">T -&gt; id.}","{<span style="color: green;">T -&gt; id.}"],  ["goto(17, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","{<span style="color: green;">T -&gt; cte_num.}"],  ["goto(17, cte_cad)","{<span style="color: green;">W -&gt; cte_cad.}","{<span style="color: green;">W -&gt; cte_cad.}"],  ["goto(18, =)","{F -&gt; id =.U ;}","{F -&gt; id =.U ;; U -&gt; .S'; U -&gt; .V; S' -&gt; .! id; S' -&gt; .T &gt; T; S' -&gt; .true; S' -&gt; .false; V -&gt; .W + V; V -&gt; .W; T -&gt; .id; T -&gt; .cte_num; W -&gt; .cte_cad; W -&gt; .T}"],  ["goto(18, %=)","{F -&gt; id %=.U ;}","{F -&gt; id %=.U ;; U -&gt; .S'; U -&gt; .V; S' -&gt; .! id; S' -&gt; .T &gt; T; S' -&gt; .true; S' -&gt; .false; V -&gt; .W + V; V -&gt; .W; T -&gt; .id; T -&gt; .cte_num; W -&gt; .cte_cad; W -&gt; .T}"],  ["goto(18, ()","{G -&gt; id (.N ) ;}","{G -&gt; id (.N ) ;; <span style="color: green;">N -&gt; .; N -&gt; .id O; N -&gt; .cte_num O; N -&gt; .cte_cad O}"],  ["goto(19, ()","{H -&gt; alert (.U ) ;}","{H -&gt; alert (.U ) ;; U -&gt; .S'; U -&gt; .V; S' -&gt; .! id; S' -&gt; .T &gt; T; S' -&gt; .true; S' -&gt; .false; V -&gt; .W + V; V -&gt; .W; T -&gt; .id; T -&gt; .cte_num; W -&gt; .cte_cad; W -&gt; .T}"],  ["goto(20, ()","{I -&gt; input (.id ) ;}","{I -&gt; input (.id ) ;}"],  ["goto(23, id)","{J -&gt; function L id.( P ) { A' }}","{J -&gt; function L id.( P ) { A' }}"],  ["goto(28, id)","{B -&gt; let M id.O ;; K -&gt; let M id.= U ;}","{B -&gt; let M id.O ;; K -&gt; let M id.= U ;; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(29, A')","{C -&gt; do { A'.} while ( S ) ;}","{C -&gt; do { A'.} while ( S ) ;}"],  ["goto(29, A)","{A' -&gt; A.A'}","{A' -&gt; A.A'; A' -&gt; .A A'; <span style="color: green;">A' -&gt; .; A -&gt; .B; A -&gt; .C; A -&gt; .D; A -&gt; .E; A -&gt; .F; A -&gt; .G; A -&gt; .H; A -&gt; .I; A -&gt; .K; B -&gt; .let M id O ;; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;; K -&gt; .let M id = U ;}"],  ["goto(29, B)","{<span style="color: green;">A -&gt; B.}","    "],  ["goto(29, C)","{<span style="color: green;">A -&gt; C.}","    "],  ["goto(29, D)","{<span style="color: green;">A -&gt; D.}","    "],  ["goto(29, E)","{<span style="color: green;">A -&gt; E.}","    "],  ["goto(29, F)","{<span style="color: green;">A -&gt; F.}","    "],  ["goto(29, G)","{<span style="color: green;">A -&gt; G.}","    "],  ["goto(29, H)","{<span style="color: green;">A -&gt; H.}","    "],  ["goto(29, I)","{<span style="color: green;">A -&gt; I.}","    "],  ["goto(29, K)","{<span style="color: green;">A -&gt; K.}","    "],  ["goto(29, let)","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;}","    "],  ["goto(29, do)","{C -&gt; do.{ A' } while ( S ) ;}","    "],  ["goto(29, if)","{D -&gt; if.( S ) R}","    "],  ["goto(29, return)","{E -&gt; return.U' ;}","    "],  ["goto(29, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","    "],  ["goto(29, alert)","{H -&gt; alert.( U ) ;}","    "],  ["goto(29, input)","{I -&gt; input.( id ) ;}","    "],  ["goto(30, S)","{D -&gt; if ( S.) R}","{D -&gt; if ( S.) R}"],  ["goto(30, !)","{S -&gt; !.id}","{S -&gt; !.id}"],  ["goto(30, id)","{S -&gt; id.&gt; id; S -&gt; id.&gt; cte_num; <span style="color: green;">S -&gt; id.}","{S -&gt; id.&gt; id; S -&gt; id.&gt; cte_num; <span style="color: green;">S -&gt; id.}"],  ["goto(30, cte_num)","{S -&gt; cte_num.&gt; cte_num; S -&gt; cte_num.&gt; id}","{S -&gt; cte_num.&gt; cte_num; S -&gt; cte_num.&gt; id}"],  ["goto(30, true)","{<span style="color: green;">S -&gt; true.}","{<span style="color: green;">S -&gt; true.}"],  ["goto(30, false)","{<span style="color: green;">S -&gt; false.}","{<span style="color: green;">S -&gt; false.}"],  ["goto(31, ;)","{<span style="color: green;">E -&gt; return U' ;.}","{<span style="color: green;">E -&gt; return U' ;.}"],  ["goto(35, id)","{<span style="color: green;">S' -&gt; ! id.}","{<span style="color: green;">S' -&gt; ! id.}"],  ["goto(36, &gt;)","{S' -&gt; T &gt;.T}","{S' -&gt; T &gt;.T; T -&gt; .id; T -&gt; .cte_num}"],  ["goto(39, +)","{V -&gt; W +.V}","{V -&gt; W +.V; V -&gt; .W + V; V -&gt; .W; W -&gt; .cte_cad; W -&gt; .T; T -&gt; .id; T -&gt; .cte_num}"],  ["goto(43, U)","{F -&gt; id = U.;}","{F -&gt; id = U.;}"],  ["goto(43, S')","{<span style="color: green;">U -&gt; S'.}","    "],  ["goto(43, V)","{<span style="color: green;">U -&gt; V.}","    "],  ["goto(43, !)","{S' -&gt; !.id}","    "],  ["goto(43, T)","{S' -&gt; T.&gt; T; <span style="color: green;">W -&gt; T.}","    "],  ["goto(43, true)","{<span style="color: green;">S' -&gt; true.}","    "],  ["goto(43, false)","{<span style="color: green;">S' -&gt; false.}","    "],  ["goto(43, W)","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}","    "],  ["goto(43, id)","{<span style="color: green;">T -&gt; id.}","    "],  ["goto(43, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","    "],  ["goto(43, cte_cad)","{<span style="color: green;">W -&gt; cte_cad.}","    "],  ["goto(44, U)","{F -&gt; id %= U.;}","{F -&gt; id %= U.;}"],  ["goto(44, S')","{<span style="color: green;">U -&gt; S'.}","    "],  ["goto(44, V)","{<span style="color: green;">U -&gt; V.}","    "],  ["goto(44, !)","{S' -&gt; !.id}","    "],  ["goto(44, T)","{S' -&gt; T.&gt; T; <span style="color: green;">W -&gt; T.}","    "],  ["goto(44, true)","{<span style="color: green;">S' -&gt; true.}","    "],  ["goto(44, false)","{<span style="color: green;">S' -&gt; false.}","    "],  ["goto(44, W)","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}","    "],  ["goto(44, id)","{<span style="color: green;">T -&gt; id.}","    "],  ["goto(44, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","    "],  ["goto(44, cte_cad)","{<span style="color: green;">W -&gt; cte_cad.}","    "],  ["goto(45, N)","{G -&gt; id ( N.) ;}","{G -&gt; id ( N.) ;}"],  ["goto(45, id)","{N -&gt; id.O}","{N -&gt; id.O; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(45, cte_num)","{N -&gt; cte_num.O}","{N -&gt; cte_num.O; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(45, cte_cad)","{N -&gt; cte_cad.O}","{N -&gt; cte_cad.O; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(46, U)","{H -&gt; alert ( U.) ;}","{H -&gt; alert ( U.) ;}"],  ["goto(46, S')","{<span style="color: green;">U -&gt; S'.}","    "],  ["goto(46, V)","{<span style="color: green;">U -&gt; V.}","    "],  ["goto(46, !)","{S' -&gt; !.id}","    "],  ["goto(46, T)","{S' -&gt; T.&gt; T; <span style="color: green;">W -&gt; T.}","    "],  ["goto(46, true)","{<span style="color: green;">S' -&gt; true.}","    "],  ["goto(46, false)","{<span style="color: green;">S' -&gt; false.}","    "],  ["goto(46, W)","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}","    "],  ["goto(46, id)","{<span style="color: green;">T -&gt; id.}","    "],  ["goto(46, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","    "],  ["goto(46, cte_cad)","{<span style="color: green;">W -&gt; cte_cad.}","    "],  ["goto(47, id)","{I -&gt; input ( id.) ;}","{I -&gt; input ( id.) ;}"],  ["goto(48, ()","{J -&gt; function L id (.P ) { A' }}","{J -&gt; function L id (.P ) { A' }; <span style="color: green;">P -&gt; .; P -&gt; .M id Q; M -&gt; .string; M -&gt; .number; M -&gt; .bool}"],  ["goto(49, O)","{B -&gt; let M id O.;}","{B -&gt; let M id O.;}"],  ["goto(49, =)","{K -&gt; let M id =.U ;}","{K -&gt; let M id =.U ;; U -&gt; .S'; U -&gt; .V; S' -&gt; .! id; S' -&gt; .T &gt; T; S' -&gt; .true; S' -&gt; .false; V -&gt; .W + V; V -&gt; .W; T -&gt; .id; T -&gt; .cte_num; W -&gt; .cte_cad; W -&gt; .T}"],  ["goto(49, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}"],  ["goto(50, })","{C -&gt; do { A' }.while ( S ) ;}","{C -&gt; do { A' }.while ( S ) ;}"],  ["goto(51, A')","{<span style="color: green;">A' -&gt; A A'.}","{<span style="color: green;">A' -&gt; A A'.}"],  ["goto(51, A)","{A' -&gt; A.A'}","    "],  ["goto(51, B)","{<span style="color: green;">A -&gt; B.}","    "],  ["goto(51, C)","{<span style="color: green;">A -&gt; C.}","    "],  ["goto(51, D)","{<span style="color: green;">A -&gt; D.}","    "],  ["goto(51, E)","{<span style="color: green;">A -&gt; E.}","    "],  ["goto(51, F)","{<span style="color: green;">A -&gt; F.}","    "],  ["goto(51, G)","{<span style="color: green;">A -&gt; G.}","    "],  ["goto(51, H)","{<span style="color: green;">A -&gt; H.}","    "],  ["goto(51, I)","{<span style="color: green;">A -&gt; I.}","    "],  ["goto(51, K)","{<span style="color: green;">A -&gt; K.}","    "],  ["goto(51, let)","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;}","    "],  ["goto(51, do)","{C -&gt; do.{ A' } while ( S ) ;}","    "],  ["goto(51, if)","{D -&gt; if.( S ) R}","    "],  ["goto(51, return)","{E -&gt; return.U' ;}","    "],  ["goto(51, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","    "],  ["goto(51, alert)","{H -&gt; alert.( U ) ;}","    "],  ["goto(51, input)","{I -&gt; input.( id ) ;}","    "],  ["goto(52, ))","{D -&gt; if ( S ).R}","{D -&gt; if ( S ).R; R -&gt; .C; R -&gt; .D; R -&gt; .E; R -&gt; .F; R -&gt; .G; R -&gt; .H; R -&gt; .I; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;}"],  ["goto(53, id)","{<span style="color: green;">S -&gt; ! id.}","{<span style="color: green;">S -&gt; ! id.}"],  ["goto(54, &gt;)","{S -&gt; id &gt;.id; S -&gt; id &gt;.cte_num}","{S -&gt; id &gt;.id; S -&gt; id &gt;.cte_num}"],  ["goto(55, &gt;)","{S -&gt; cte_num &gt;.cte_num; S -&gt; cte_num &gt;.id}","{S -&gt; cte_num &gt;.cte_num; S -&gt; cte_num &gt;.id}"],  ["goto(60, T)","{<span style="color: green;">S' -&gt; T &gt; T.}","{<span style="color: green;">S' -&gt; T &gt; T.}"],  ["goto(60, id)","{<span style="color: green;">T -&gt; id.}","    "],  ["goto(60, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","    "],  ["goto(61, V)","{<span style="color: green;">V -&gt; W + V.}","{<span style="color: green;">V -&gt; W + V.}"],  ["goto(61, W)","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}","    "],  ["goto(61, cte_cad)","{<span style="color: green;">W -&gt; cte_cad.}","    "],  ["goto(61, T)","{<span style="color: green;">W -&gt; T.}","{<span style="color: green;">W -&gt; T.}"],  ["goto(61, id)","{<span style="color: green;">T -&gt; id.}","    "],  ["goto(61, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","    "],  ["goto(62, ;)","{<span style="color: green;">F -&gt; id = U ;.}","{<span style="color: green;">F -&gt; id = U ;.}"],  ["goto(63, ;)","{<span style="color: green;">F -&gt; id %= U ;.}","{<span style="color: green;">F -&gt; id %= U ;.}"],  ["goto(64, ))","{G -&gt; id ( N ).;}","{G -&gt; id ( N ).;}"],  ["goto(65, O)","{<span style="color: green;">N -&gt; id O.}","{<span style="color: green;">N -&gt; id O.}"],  ["goto(65, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","    "],  ["goto(66, O)","{<span style="color: green;">N -&gt; cte_num O.}","{<span style="color: green;">N -&gt; cte_num O.}"],  ["goto(66, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","    "],  ["goto(67, O)","{<span style="color: green;">N -&gt; cte_cad O.}","{<span style="color: green;">N -&gt; cte_cad O.}"],  ["goto(67, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","    "],  ["goto(68, ))","{H -&gt; alert ( U ).;}","{H -&gt; alert ( U ).;}"],  ["goto(69, ))","{I -&gt; input ( id ).;}","{I -&gt; input ( id ).;}"],  ["goto(70, P)","{J -&gt; function L id ( P.) { A' }}","{J -&gt; function L id ( P.) { A' }}"],  ["goto(70, M)","{P -&gt; M.id Q}","{P -&gt; M.id Q}"],  ["goto(70, string)","{<span style="color: green;">M -&gt; string.}","    "],  ["goto(70, number)","{<span style="color: green;">M -&gt; number.}","    "],  ["goto(70, bool)","{<span style="color: green;">M -&gt; bool.}","    "],  ["goto(71, ;)","{<span style="color: green;">B -&gt; let M id O ;.}","{<span style="color: green;">B -&gt; let M id O ;.}"],  ["goto(72, U)","{K -&gt; let M id = U.;}","{K -&gt; let M id = U.;}"],  ["goto(72, S')","{<span style="color: green;">U -&gt; S'.}","    "],  ["goto(72, V)","{<span style="color: green;">U -&gt; V.}","    "],  ["goto(72, !)","{S' -&gt; !.id}","    "],  ["goto(72, T)","{S' -&gt; T.&gt; T; <span style="color: green;">W -&gt; T.}","    "],  ["goto(72, true)","{<span style="color: green;">S' -&gt; true.}","    "],  ["goto(72, false)","{<span style="color: green;">S' -&gt; false.}","    "],  ["goto(72, W)","{V -&gt; W.+ V; <span style="color: green;">V -&gt; W.}","    "],  ["goto(72, id)","{<span style="color: green;">T -&gt; id.}","    "],  ["goto(72, cte_num)","{<span style="color: green;">T -&gt; cte_num.}","    "],  ["goto(72, cte_cad)","{<span style="color: green;">W -&gt; cte_cad.}","    "],  ["goto(73, id)","{O -&gt; , id.O}","{O -&gt; , id.O; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(73, cte_num)","{O -&gt; , cte_num.O}","{O -&gt; , cte_num.O; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(73, cte_cad)","{O -&gt; , cte_cad.O}","{O -&gt; , cte_cad.O; O -&gt; ., id O; <span style="color: green;">O -&gt; .; O -&gt; ., cte_num O; O -&gt; ., cte_cad O}"],  ["goto(74, while)","{C -&gt; do { A' } while.( S ) ;}","{C -&gt; do { A' } while.( S ) ;}"],  ["goto(76, R)","{<span style="color: green;">D -&gt; if ( S ) R.}","{<span style="color: green;">D -&gt; if ( S ) R.}"],  ["goto(76, C)","{<span style="color: green;">R -&gt; C.}","{<span style="color: green;">R -&gt; C.}"],  ["goto(76, D)","{<span style="color: green;">R -&gt; D.}","{<span style="color: green;">R -&gt; D.}"],  ["goto(76, E)","{<span style="color: green;">R -&gt; E.}","{<span style="color: green;">R -&gt; E.}"],  ["goto(76, F)","{<span style="color: green;">R -&gt; F.}","{<span style="color: green;">R -&gt; F.}"],  ["goto(76, G)","{<span style="color: green;">R -&gt; G.}","{<span style="color: green;">R -&gt; G.}"],  ["goto(76, H)","{<span style="color: green;">R -&gt; H.}","{<span style="color: green;">R -&gt; H.}"],  ["goto(76, I)","{<span style="color: green;">R -&gt; I.}","{<span style="color: green;">R -&gt; I.}"],  ["goto(76, do)","{C -&gt; do.{ A' } while ( S ) ;}","    "],  ["goto(76, if)","{D -&gt; if.( S ) R}","    "],  ["goto(76, return)","{E -&gt; return.U' ;}","    "],  ["goto(76, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","    "],  ["goto(76, alert)","{H -&gt; alert.( U ) ;}","    "],  ["goto(76, input)","{I -&gt; input.( id ) ;}","    "],  ["goto(78, id)","{<span style="color: green;">S -&gt; id &gt; id.}","{<span style="color: green;">S -&gt; id &gt; id.}"],  ["goto(78, cte_num)","{<span style="color: green;">S -&gt; id &gt; cte_num.}","{<span style="color: green;">S -&gt; id &gt; cte_num.}"],  ["goto(79, cte_num)","{<span style="color: green;">S -&gt; cte_num &gt; cte_num.}","{<span style="color: green;">S -&gt; cte_num &gt; cte_num.}"],  ["goto(79, id)","{<span style="color: green;">S -&gt; cte_num &gt; id.}","{<span style="color: green;">S -&gt; cte_num &gt; id.}"],  ["goto(85, ;)","{<span style="color: green;">G -&gt; id ( N ) ;.}","{<span style="color: green;">G -&gt; id ( N ) ;.}"],  ["goto(89, ;)","{<span style="color: green;">H -&gt; alert ( U ) ;.}","{<span style="color: green;">H -&gt; alert ( U ) ;.}"],  ["goto(90, ;)","{<span style="color: green;">I -&gt; input ( id ) ;.}","{<span style="color: green;">I -&gt; input ( id ) ;.}"],  ["goto(91, ))","{J -&gt; function L id ( P ).{ A' }}","{J -&gt; function L id ( P ).{ A' }}"],  ["goto(92, id)","{P -&gt; M id.Q}","{P -&gt; M id.Q; Q -&gt; ., M id Q; <span style="color: green;">Q -&gt; .}"],  ["goto(94, ;)","{<span style="color: green;">K -&gt; let M id = U ;.}","{<span style="color: green;">K -&gt; let M id = U ;.}"],  ["goto(95, O)","{<span style="color: green;">O -&gt; , id O.}","{<span style="color: green;">O -&gt; , id O.}"],  ["goto(95, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","    "],  ["goto(96, O)","{<span style="color: green;">O -&gt; , cte_num O.}","{<span style="color: green;">O -&gt; , cte_num O.}"],  ["goto(96, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","    "],  ["goto(97, O)","{<span style="color: green;">O -&gt; , cte_cad O.}","{<span style="color: green;">O -&gt; , cte_cad O.}"],  ["goto(97, ,)","{O -&gt; ,.id O; O -&gt; ,.cte_num O; O -&gt; ,.cte_cad O}","    "],  ["goto(98, ()","{C -&gt; do { A' } while (.S ) ;}","{C -&gt; do { A' } while (.S ) ;; S -&gt; .! id; S -&gt; .id &gt; id; S -&gt; .id &gt; cte_num; S -&gt; .cte_num &gt; cte_num; S -&gt; .cte_num &gt; id; S -&gt; .id; S -&gt; .true; S -&gt; .false}"],  ["goto(114, {)","{J -&gt; function L id ( P ) {.A' }}","{J -&gt; function L id ( P ) {.A' }; A' -&gt; .A A'; <span style="color: green;">A' -&gt; .; A -&gt; .B; A -&gt; .C; A -&gt; .D; A -&gt; .E; A -&gt; .F; A -&gt; .G; A -&gt; .H; A -&gt; .I; A -&gt; .K; B -&gt; .let M id O ;; C -&gt; .do { A' } while ( S ) ;; D -&gt; .if ( S ) R; E -&gt; .return U' ;; F -&gt; .id = U ;; F -&gt; .id %= U ;; G -&gt; .id ( N ) ;; H -&gt; .alert ( U ) ;; I -&gt; .input ( id ) ;; K -&gt; .let M id = U ;}"],  ["goto(115, Q)","{<span style="color: green;">P -&gt; M id Q.}","{<span style="color: green;">P -&gt; M id Q.}"],  ["goto(115, ,)","{Q -&gt; ,.M id Q}","{Q -&gt; ,.M id Q; M -&gt; .string; M -&gt; .number; M -&gt; .bool}"],  ["goto(120, S)","{C -&gt; do { A' } while ( S.) ;}","{C -&gt; do { A' } while ( S.) ;}"],  ["goto(120, !)","{S -&gt; !.id}","    "],  ["goto(120, id)","{S -&gt; id.&gt; id; S -&gt; id.&gt; cte_num; <span style="color: green;">S -&gt; id.}","    "],  ["goto(120, cte_num)","{S -&gt; cte_num.&gt; cte_num; S -&gt; cte_num.&gt; id}","    "],  ["goto(120, true)","{<span style="color: green;">S -&gt; true.}","    "],  ["goto(120, false)","{<span style="color: green;">S -&gt; false.}","    "],  ["goto(121, A')","{J -&gt; function L id ( P ) { A'.}}","{J -&gt; function L id ( P ) { A'.}}"],  ["goto(121, A)","{A' -&gt; A.A'}","    "],  ["goto(121, B)","{<span style="color: green;">A -&gt; B.}","    "],  ["goto(121, C)","{<span style="color: green;">A -&gt; C.}","    "],  ["goto(121, D)","{<span style="color: green;">A -&gt; D.}","    "],  ["goto(121, E)","{<span style="color: green;">A -&gt; E.}","    "],  ["goto(121, F)","{<span style="color: green;">A -&gt; F.}","    "],  ["goto(121, G)","{<span style="color: green;">A -&gt; G.}","    "],  ["goto(121, H)","{<span style="color: green;">A -&gt; H.}","    "],  ["goto(121, I)","{<span style="color: green;">A -&gt; I.}","    "],  ["goto(121, K)","{<span style="color: green;">A -&gt; K.}","    "],  ["goto(121, let)","{B -&gt; let.M id O ;; K -&gt; let.M id = U ;}","    "],  ["goto(121, do)","{C -&gt; do.{ A' } while ( S ) ;}","    "],  ["goto(121, if)","{D -&gt; if.( S ) R}","    "],  ["goto(121, return)","{E -&gt; return.U' ;}","    "],  ["goto(121, id)","{F -&gt; id.= U ;; F -&gt; id.%= U ;; G -&gt; id.( N ) ;}","    "],  ["goto(121, alert)","{H -&gt; alert.( U ) ;}","    "],  ["goto(121, input)","{I -&gt; input.( id ) ;}","    "],  ["goto(123, M)","{Q -&gt; , M.id Q}","{Q -&gt; , M.id Q}"],  ["goto(123, string)","{<span style="color: green;">M -&gt; string.}","    "],  ["goto(123, number)","{<span style="color: green;">M -&gt; number.}","    "],  ["goto(123, bool)","{<span style="color: green;">M -&gt; bool.}","    "],  ["goto(124, ))","{C -&gt; do { A' } while ( S ).;}","{C -&gt; do { A' } while ( S ).;}"],  ["goto(125, })","{<span style="color: green;">J -&gt; function L id ( P ) { A' }.}","{<span style="color: green;">J -&gt; function L id ( P ) { A' }.}"],  ["goto(126, id)","{Q -&gt; , M id.Q}","{Q -&gt; , M id.Q; Q -&gt; ., M id Q; <span style="color: green;">Q -&gt; .}"],  ["goto(127, ;)","{<span style="color: green;">C -&gt; do { A' } while ( S ) ;.}","{<span style="color: green;">C -&gt; do { A' } while ( S ) ;.}"],  ["goto(129, Q)","{<span style="color: green;">Q -&gt; , M id Q.}","{<span style="color: green;">Q -&gt; , M id Q.}"],  ["goto(129, ,)","{Q -&gt; ,.M id Q}","    "],]</table></div>
+		<br><hr><br>
+		<table border="1"    cellpadding="8"   >[
+  ["
+			<div id="lrTableView"><table border="1"   ><thead>  [<th colspan="57"  >LR table</th>],  [<th rowspan="2"   >State</th><th rowspan="1"    colspan="28"  >ACTION</th><th colspan="28"  >GOTO</th>],
+  [<th>let</th><th>id</th><th>;</th><th>do</th><th>{</th><th>}</th><th>while</th><th>(</th><th>)</th><th>if</th><th>return</th><th>=</th><th>%=</th><th>alert</th><th>input</th><th>function</th><th>string</th><th>number</th><th>bool</th><th>cte_num</th><th>cte_cad</th><th>,</th><th>!</th><th>&gt;</th><th>true</th><th>false</th><th>+</th><th>$</th><th>Z</th><th>Y</th><th>A</th><th>A'</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th><th>K</th><th>L</th><th>M</th><th>N</th><th>O</th><th>P</th><th>Q</th><th>R</th><th>S</th><th>S'</th><th>U'</th><th>U</th><th>V</th><th>W</th><th>T</th>],</thead>[
   ["s14" ,"s18" ,"    ","s15" ,"    ","    ","    ","    ","    ","s16" ,"s17" ,"    ","    ","s19" ,"s20" ,"s13" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","r3"  ,"    ","1"   ,"2"   ,"    ","4"   ,"5"   ,"6"   ,"7"   ,"8"   ,"9"   ,"10"  ,"11"  ,"3"   ,"12"  ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
-  ["    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","acc" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
+  ["    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","<span style="color: green;">acc", "    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
   ["s14" ,"s18" ,"    ","s15" ,"    ","    ","    ","    ","    ","s16" ,"s17" ,"    ","    ","s19" ,"s20" ,"s13" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","r3"  ,"    ","21"  ,"2"   ,"    ","4"   ,"5"   ,"6"   ,"7"   ,"8"   ,"9"   ,"10"  ,"11"  ,"3"   ,"12"  ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
   ["s14" ,"s18" ,"    ","s15" ,"    ","    ","    ","    ","    ","s16" ,"s17" ,"    ","    ","s19" ,"s20" ,"s13" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","r3"  ,"    ","22"  ,"2"   ,"    ","4"   ,"5"   ,"6"   ,"7"   ,"8"   ,"9"   ,"10"  ,"11"  ,"3"   ,"12"  ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
   ["r4"  ,"r4"  ,"    ","r4"  ,"    ","r4"  ,"    ","    ","    ","r4"  ,"r4"  ,"    ","    ","r4"  ,"r4"  ,"r4"  ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","r4"  ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
@@ -229,7 +200,150 @@ export const actionsGoto: Array<string[]> =
   ["    ","    ","    ","    ","    ","    ","    ","    ","r42" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","s123","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","131" ,"    ","    ","    ","    ","    ","    ","    ","    "],
   ["r16" ,"r16" ,"    ","r16" ,"    ","r16" ,"    ","    ","    ","r16" ,"r16" ,"    ","    ","r16" ,"r16" ,"r16" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","r16" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "],
   ["    ","    ","    ","    ","    ","    ","    ","    ","r41" ,"    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    ","    "]
-  ];
-export const erroresSintactico: Array<string[]>=[
-  [''],
-  ]; 
+]</table></div>
+			","
+			<div id="lrParseView"><p>Input (tokens): <input id="input" type="text" size="12"   onkeyup="resize(this, 1);" onchange="parseInput();" value="id + id * id" style="color: red;"></p><p>Maximum number of steps: <input id="maximumStepCount" type="text" size="3"    onkeyup="resize(this, 1);" onchange="parseInput();" value="100"  style="color: black;"></p><p><input type="button" value="PARSE"></p><br><table border="6"   ><thead>  [<th colspan="4"   >Trace</th><th rowspan="2"   >Tree</th>],  [<th>Step</th><th>Stack</th><th>Input</th><th>Action</th>],</thead><tbody id="traceAndTreeRows">  ["1"   ,"0","id + id * id $","s18" ,<td id="tree" style="vertical-align: top;" rowspan="4"   >    "],
+  ["2"   ,"0 id 18","+ id * id $","    "],
+]</table></div>
+		"],]</table>
+	</div>
+"],]</table>
+
+<script language="javascript">
+<!--
+
+// <TEST>
+
+{
+	/*
+	 * (0) A' -> A
+	 * (1) A -> a A
+	 * (2) A -> a
+	 *
+	 * FIRST(A') = { a }
+	 * FIRST(A) = { a }
+	 *
+	 * FOLLOW(A') = { $ }
+	 * FOLLOW(A) = { $ }
+	 */
+	var grammar = new Grammar('A\' -> A\nA -> a A\nA -> a');
+	
+	assertEquality('A\'', grammar.axiom);
+	assertEquality(3, grammar.rules.length);
+	assertEquality(['a'].toString(), grammar.firsts['A'].toString());
+	assertEquality(['$'].toString(), grammar.follows['A'].toString());
+	
+	assertEquals(new Item(new Rule(grammar, 'A -> a A'), 1), new Item(new Rule(grammar, 'A -> a A'), 1));
+	assertEquality(0, indexOfUsingEquals(new Item(new Rule(grammar, 'A -> a A'), 1), [new Item(new Rule(grammar, 'A -> a A'), 1)]));
+	
+	/*
+	 *              closure { A' -> .A }          = 0 = { A' -> .A; A -> .a A; A -> .a }
+	 * goto(0, A) = closure { A' -> A. }          = 1 = { A' -> A. }
+	 * goto(0, a) = closure { A -> a.A; A -> a. } = 2 = { A -> a.A; A -> a.; A -> .a A; A -> .a }
+	 * goto(2, A) = closure { A -> a A. }         = 3 = { A -> a A. }
+	 * goto(2, a) = closure { A -> a.A; A -> a. } = 2
+	 */
+	var lrClosureTable = new LRClosureTable(grammar);
+	
+	assertEquality(3, lrClosureTable.kernels[0].closure.length);
+	assertEquality(4, lrClosureTable.kernels.length);
+	
+	/*
+	 *   a  $  A' A
+	 * 0 s2       1
+	 * 1    r0
+	 * 2 s2 r2    3
+	 * 3    r1
+	 */
+	var lrTable = new LRTable(lrClosureTable);
+	
+	assertEquality(4, lrTable.states.length);
+	assertEquality('s2', lrTable.states[0]['a']);
+	assertEquality('r0', lrTable.states[1]['$']);
+	assertEquality('s2', lrTable.states[2]['a']);
+	assertEquality('r2', lrTable.states[2]['$']);
+	assertEquality('3', lrTable.states[2]['A']);
+	assertEquality('r1', lrTable.states[3]['$']);
+}
+
+{
+	/*
+	 * (0) A' -> A
+	 * (1) A -> B
+	 * (2) A -> ''
+	 * (3) B -> ( A )
+	 *
+	 * FIRST(A') = { '', ( }
+	 * FIRST(A) = { '', ( }
+	 * FIRST(B) = { ( }
+	 *
+	 * FOLLOW(A') = { $ }
+	 * FOLLOW(A) = { $, ) }
+	 * FOLLOW(B) = { $, ) }
+	 */
+	var grammar = new Grammar('A\' -> A\nA -> B\nA -> \'\'\nB -> ( A )');
+	
+	assertEquality('A\'', grammar.axiom);
+	assertEquality(4, grammar.rules.length);
+	assertEquality([EPSILON, '('].toString(), grammar.firsts['A'].toString());
+	assertEquality(['$', ')'].toString(), grammar.follows['A'].toString());
+	assertEquality('A -> .b', new Item(new Rule(grammar, 'A -> b'), 0).toString());
+	
+	/*
+	 *              closure { A' -> .A }    = 0 = { A' -> .A; A -> .B; A -> .; B -> .( A ) }
+	 * goto(0, A) = closure { A' -> A. }    = 1 = { A' -> A. }
+	 * goto(0, B) = closure { A -> B. }     = 2 = { A -> B. }
+	 * goto(0, () = closure { B -> (.A ) }  = 3 = { B -> (.A ); A -> .B; A -> .; B -> .( A ) }
+	 * goto(3, A) = closure { B -> ( A.) }  = 4 = { B -> ( A.) }
+	 * goto(3, B) = closure { A -> B. }     = 2
+	 * goto(3, () = closure { B -> (.A ) }  = 3
+	 * goto(4, )) = closure { B -> ( A ). } = 5 = { B -> ( A ). }
+	 */
+	var lrClosureTable = new LRClosureTable(grammar);
+	
+	assertEquality(4, lrClosureTable.kernels[0].closure.length);
+	assertEquality(6, lrClosureTable.kernels.length);
+	
+	/*
+	 *   (  )  $  A' A B
+	 * 0 s3 r2 r2    1 2
+	 * 1       r0
+	 * 2    r1 r1
+	 * 3 s3 r2 r2    4 2
+	 * 4    s5
+	 * 5    r3 r3
+	 */
+	var lrTable = new LRTable(lrClosureTable);
+	
+	assertEquality(6, lrTable.states.length);
+	assertEquality('s3', lrTable.states[0]['(']);
+	assertEquality('r0', lrTable.states[1]['$']);
+	assertEquality('4', lrTable.states[3]['A']);
+}
+
+// </TEST>
+
+// <INITIALIZATION>
+
+{
+	var grammar = new Grammar('E\' -> E\n\
+E -> E + T\n\
+E -> T\n\
+T -> T * F\n\
+T -> F\n\
+F -> ( E )\n\
+F -> id');
+
+	$element('grammarView').innerHTML = formatGrammar(grammar);
+}
+
+$element('lrParseView').innerHTML = formatInitialParseView('id + id * id', 100);
+
+grammarChanged();
+
+// </INITIALIZATION>
+
+// -->
+</script>
+
+</body></html>

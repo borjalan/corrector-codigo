@@ -117,54 +117,56 @@ const getColumnaRegla = (numRegla: number): number => {
       return 29;
     case 'A':
       return 30;
-    case 'B':
+    case "A'":
       return 31;
-    case 'C':
+    case 'B':
       return 32;
-    case 'D':
+    case 'C':
       return 33;
-    case 'E':
+    case 'D':
       return 34;
-    case 'F':
+    case 'E':
       return 35;
-    case 'G':
+    case 'F':
       return 36;
-    case 'H':
+    case 'G':
       return 37;
-    case 'I':
+    case 'H':
       return 38;
-    case 'J':
+    case 'I':
       return 39;
-    case 'K':
+    case 'J':
       return 40;
-    case 'L':
+    case 'K':
       return 41;
-    case 'M':
+    case 'L':
       return 42;
-    case 'N':
+    case 'M':
       return 43;
-    case 'O':
+    case 'N':
       return 44;
-    case 'P':
+    case 'O':
       return 45;
-    case 'Q':
+    case 'P':
       return 46;
-    case 'R':
+    case 'Q':
       return 47;
-    case 'S':
+    case 'R':
       return 48;
-    case "S'":
+    case 'S':
       return 49;
-    case "U'":
+    case "S'":
       return 50;
-    case 'U':
+    case "U'":
       return 51;
-    case 'V':
+    case 'U':
       return 52;
-    case 'W':
+    case 'V':
       return 53;
-    case 'T':
+    case 'W':
       return 54;
+    case 'T':
+      return 55;
     default:
       return 0;
   }

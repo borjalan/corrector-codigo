@@ -12,6 +12,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Convertir GoTo",
+      "program": "${workspaceFolder}/build/Conversores/conversor.js",
+      "preLaunchTask": "npm: build",
+      "args": ["${workspaceFolder}/src/Conversores/GoTo.html"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Test 1",
       "program": "${workspaceFolder}/build/index.js",
       "preLaunchTask": "npm: build",
