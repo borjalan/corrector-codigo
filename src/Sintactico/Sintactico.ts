@@ -205,7 +205,7 @@ const obtenerNumProducciones = (action: string): number => {
 
 const aplicarReduccion = (extracciones: number): void => {
   let counter: number = extracciones * 2;
-  while (counter != 0) {
+  while (counter != 0 && pilaSintactico.length > 2) {
     pilaSintactico.pop();
     counter--;
   }
