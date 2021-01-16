@@ -54,7 +54,7 @@ const writeTokenOnLog = (token: Token) => {
 const consolaToken = (token: Token) => {
   let codigo = getTokenCode(token);
   if (process.argv.includes('-lex') && codigo != 'FINAL') {
-    console.log(chalk.bgGreen(JSON.stringify(token)));
+    console.log(chalk.black.bgGreen(JSON.stringify(token)));
   }
 };
 
