@@ -19,13 +19,14 @@ const parse = (token: Token): string => {
     pilaSintactico.push(desplazamiento.toString());
     return 'Desplazado';
   } else if (esReducción(accion)) {
-    const numRegla: number = valorNum(accion);
+    let numRegla: number = valorNum(accion);
     const produccionesRegla: number = obtenerNumProducciones(accion);
     const columnaRegla: number = getColumnaRegla(numRegla);
     aplicarReduccion(produccionesRegla);
     estadoActual = obtenerEstadoActual();
     pilaSintactico.push(numRegla.toString());
     pilaSintactico.push(actionsGoto[estadoActual][columnaRegla]);
+    numRegla++
     return numRegla.toString();
   } else if (esAceptar(accion)) {
     return 'Finalizado';
