@@ -28,7 +28,7 @@ L -> ''
 L -> M
 M -> string
 M -> number
-M -> bool
+M -> boolean
 N -> ''
 N -> id O
 N -> cte_num O

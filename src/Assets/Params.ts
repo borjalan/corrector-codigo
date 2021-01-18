@@ -5,7 +5,7 @@ export const reservadas: Array<string> =
   // Este array contiene todas las palabras reservadas de js
   [
     'alert',
-    'bool',
+    'boolean',
     'do',
     'false',
     'function',
@@ -50,7 +50,7 @@ export const reservadas: Array<string> =
    ["L","M"],                              //27
    ["M","string"],                         //28
    ["M","number"],                         //29
-   ["M","bool"],                           //30
+   ["M","boolean"],                           //30
    ["N","λ"],                              //31
    ["N","id O"],                           //32
    ["N","cte_num O"],                      //33
@@ -244,8 +244,8 @@ export const erroresSintactico: Array<string[]>=[
   ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //10
   ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //11
   ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input, function o el fin del fichero'], //12
-  ['Se esperaba uno de los siguientes Tokens: id, string, number, bool'], //13
-  ['Se esperaba uno de los siguientes Tokens: string, number, bool'], //14
+  ['Se esperaba uno de los siguientes Tokens: id, string, number, boolean'], //13
+  ['Se esperaba uno de los siguientes Tokens: string, number, boolean'], //14
   ['Se esperaba uno de los siguientes Tokens: {'], //15
   ['Se esperaba uno de los siguientes Tokens: ('], //16
   ['Se esperaba uno de los siguientes Tokens: id, ; , constante numerica, constante cadena, !, true, false'], //17
@@ -301,7 +301,7 @@ export const erroresSintactico: Array<string[]>=[
   ['Se esperaba uno de los siguientes Tokens: ;, ), ,'], //67
   ['Se esperaba uno de los siguientes Tokens: )'], //68
   ['Se esperaba uno de los siguientes Tokens: )'], //69
-  ['Se esperaba uno de los siguientes Tokens: ), string, number, bool'], //70
+  ['Se esperaba uno de los siguientes Tokens: ), string, number, boolean'], //70
   ['Se esperaba uno de los siguientes Tokens: ;'], //71
   ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena, !, true, false'], //72
   ['Se esperaba uno de los siguientes Tokens: id, constante numerica, constante cadena'], //73
@@ -354,7 +354,7 @@ export const erroresSintactico: Array<string[]>=[
   ['Se esperaba uno de los siguientes Tokens: id, constante numerica, !, true, false'], //120
   ['Se esperaba uno de los siguientes Tokens: let, id, do, }, if, return, alert, input'], //121
   ['Se esperaba uno de los siguientes Tokens: )'], //122
-  ['Se esperaba uno de los siguientes Tokens: string, number, bool'], //123
+  ['Se esperaba uno de los siguientes Tokens: string, number, boolean'], //123
   ['Se esperaba uno de los siguientes Tokens: )'], //124
   ['Se esperaba uno de los siguientes Tokens: }'], //125
   ['Se esperaba uno de los siguientes Tokens: id'], //126
