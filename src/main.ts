@@ -43,10 +43,9 @@ const main = (path: string, flags: boolean[]): void => {
       case 'Error':
         break;
       default:
-        escribirParse(resultadoSintax);
-        // if (!isNaN(resultadoSintax)) {
-        //   Semantico.accionesSemántico(resultadoSintax, token);
-        // }
+        let regla = parseInt(resultadoSintax)
+        regla++
+        escribirParse(regla.toString());
         break;
     }
   }

@@ -1,18 +1,18 @@
 /* No se debe corregir ningÃºn error ni cambiar nada de este fichero, 
 salvo los operadores para adecuarlos a lo implementado */
-
+alert ('yay');
 function imprime ()
 {
 	alert (kk);
 	kk= kk + kkk;
 	return kk;
 }
-let bool booleano2 = true;
+let boolean booleano2 = true;
 let number kk;
-let bool bb;
+let boolean bb;
 let number id = 4;
 id %= 5;
-let bool booleano = 4 > 5;
+let boolean booleano = 4 > 5;
 
 kk = 8 + 2;
 
@@ -20,12 +20,12 @@ kk = 8 + 2;
 let string s1;
 alert (kkk);
 alert ('-');
-
+input (id);
 
 s1 = 'Introduce un digito ';
-if (11 > iii) alert (iii);
+if ( !id) alert (iii);
 alert ('yay'); 
-/*function number sent (string s)
+function number sent (string s, number potat)
 {
 	let number iii;
 	kk = s_ + 1;
@@ -33,8 +33,7 @@ alert ('yay');
 	do
 	{
 		alert (iii);
-		iii = iii + 1;
 	}while (11 > iii);
 	
 	return bb;
-}*/
+}
