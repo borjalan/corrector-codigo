@@ -20,7 +20,7 @@ L -> ''
 L -> M
 M -> string
 M -> number
-M -> bool
+M -> boolean
 N -> ''
 N -> id O
 N -> cte_num O
@@ -43,7 +43,7 @@ S -> true
 S -> false
 S' -> ! id
 S' -> T > T
-S' -> true 
+S' -> true
 S' -> false
 U' -> ''
 U' -> U
