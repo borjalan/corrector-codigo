@@ -11,6 +11,8 @@ export interface Token {
   };
 }
 
+export type Tipos = 'number' | 'string' | 'boolean';
+
 /*
   type StxError = '    ';
   type Fin = 'acc';
