@@ -28,7 +28,7 @@ const main = (path: string, flags: boolean[]): void => {
   consolaToken(token);
   writeTokenOnLog(token);
 
-  while (resultadoSintax != 'Finalizado') {
+  while (resultadoSintax != 'Finalizado' && resultadoSintax != 'Error') {
     resultadoSintax = Sintactico.parse(token);
     switch (resultadoSintax) {
       case 'Desplazado':
@@ -37,16 +37,15 @@ const main = (path: string, flags: boolean[]): void => {
         writeTokenOnLog(token);
         break;
       case 'Finalizado':
-        escribirParse('0');
+        escribirParse('1');
         // Semantico.accionesSemántico(0, token);
         break;
       case 'Error':
         break;
       default:
-        escribirParse(resultadoSintax);
-        // if (!isNaN(resultadoSintax)) {
-        //   Semantico.accionesSemántico(resultadoSintax, token);
-        // }
+        let regla = parseInt(resultadoSintax)
+        regla++
+        escribirParse(regla.toString());
         break;
     }
   }

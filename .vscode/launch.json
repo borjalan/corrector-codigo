@@ -30,7 +30,32 @@
       "request": "launch",
       "name": "Test 02",
       "program": "${workspaceFolder}/build/index.js",
+      "preLaunchTask": "npm: build",
       "args": ["__test__/prueba02.test.js", "-lex", "-sin", "-sem"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test 03",
+      "program": "${workspaceFolder}/build/index.js",
+      "preLaunchTask": "npm: build",
+      "args": ["__test__/prueba03.test.js", "-lex", "-sin", "-sem"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test 04",
+      "program": "${workspaceFolder}/build/index.js",
+      "preLaunchTask": "npm: build",
+      "args": ["__test__/prueba04.test.js", "-lex", "-sin", "-sem"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test 05",
+      "program": "${workspaceFolder}/build/index.js",
+      "preLaunchTask": "npm: build",
+      "args": ["__test__/prueba05.test.js", "-lex", "-sin", "-sem"]
     }
   ]
 }

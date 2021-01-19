@@ -131,7 +131,7 @@ const logicaAutomata = (): Token => {
       break;
     case 4:
       if (caracter == "'") {
-        var cadena = pila + caracter;
+        const cadena =  "\"" + pila + "\"";
         changeState(0);
         return {
           codigo: 'CADENA',
@@ -180,8 +180,7 @@ const logicaAutomata = (): Token => {
       if (caracter == '=') {
         changeState(0);
         return {
-          codigo: 'OP_ASIGCRES',
-          atributo: { cadena: '%=' },
+          codigo: 'OPASIGCRES',
           posicion: { linea: linea, columna: columna },
         };
       } else {
@@ -236,71 +235,61 @@ const baseCaseCheck = (): Token | undefined => {
     case '+':
       changeState(0);
       return {
-        codigo: 'OP_SUM',
-        atributo: { cadena: '+' },
+        codigo: 'OPSUM',
         posicion: { linea: linea, columna: columna },
       };
     case '!':
       changeState(0);
       return {
-        codigo: 'OP_NEG',
-        atributo: { cadena: '!' },
+        codigo: 'OPNEG',
         posicion: { linea: linea, columna: columna },
       };
     case '(':
       changeState(0);
       return {
-        codigo: 'APT_PAREN',
-        atributo: { cadena: '(' },
+        codigo: 'APTPAREN',
         posicion: { linea: linea, columna: columna },
       };
     case ')':
       changeState(0);
       return {
-        codigo: 'CIE_PAREN',
-        atributo: { cadena: ')' },
+        codigo: 'CIEPAREN',
         posicion: { linea: linea, columna: columna },
       };
     case '{':
       changeState(0);
       return {
-        codigo: 'APT_BLOCK',
-        atributo: { cadena: '{' },
+        codigo: 'APTBLOCK',
         posicion: { linea: linea, columna: columna },
       };
     case '}':
       changeState(0);
       return {
-        codigo: 'CIE_BLOCK',
-        atributo: { cadena: '}' },
+        codigo: 'CIEBLOCK',
         posicion: { linea: linea, columna: columna },
       };
     case ',':
       changeState(0);
       return {
         codigo: 'COMA',
-        atributo: { cadena: ',' },
         posicion: { linea: linea, columna: columna },
       };
     case ';':
       changeState(0);
       return {
-        codigo: 'PTO_COMA',
-        atributo: { cadena: ';' },
+        codigo: 'PTOCOMA',
         posicion: { linea: linea, columna: columna },
       };
     case '>':
       changeState(0);
       return {
-        codigo: 'OP_MAY',
-        atributo: { cadena: '>' },
+        codigo: 'OPMAY',
         posicion: { linea: linea, columna: columna },
       };
     case '=':
       changeState(0);
       return {
-        codigo: 'OP_ASIG',
-        atributo: { cadena: '=' },
+        codigo: 'OPASIG',
         posicion: { linea: linea, columna: columna },
       };
     case '/':
