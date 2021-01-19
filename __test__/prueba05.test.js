@@ -1,0 +1,10 @@
+let number a;
+let number b;
+let boolean bbb;
+a = 3;
+b = a;
+if (a > b) b %= 1;
+if (b > a) b = 8888;
+a = a + b;
+alert (a);
+alert(b);

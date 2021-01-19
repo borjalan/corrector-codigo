@@ -50,27 +50,27 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 0;
     case codigo == 'ID':
       return 1;
-    case codigo == 'PTO_COMA':
+    case codigo == 'PTOCOMA':
       return 2;
     case codigo == 'RESERVADA' && lexema == 'do':
       return 3;
-    case codigo == 'APT_BLOCK':
+    case codigo == 'APTBLOCK':
       return 4;
-    case codigo == 'CIE_BLOCK':
+    case codigo == 'CIEBLOCK':
       return 5;
     case codigo == 'RESERVADA' && lexema == 'while':
       return 6;
-    case codigo == 'APT_PAREN':
+    case codigo == 'APTPAREN':
       return 7;
-    case codigo == 'CIE_PAREN':
+    case codigo == 'CIEPAREN':
       return 8;
     case codigo == 'RESERVADA' && lexema == 'if':
       return 9;
     case codigo == 'RESERVADA' && lexema == 'return':
       return 10;
-    case codigo == 'OP_ASIG':
+    case codigo == 'OPASIG':
       return 11;
-    case codigo == 'OP_ASIGCRES':
+    case codigo == 'OPASIGCRES':
       return 12;
     case codigo == 'RESERVADA' && lexema == 'alert':
       return 13;
@@ -82,7 +82,7 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 16;
     case codigo == 'RESERVADA' && lexema == 'number':
       return 17;
-    case codigo == 'RESERVADA' && lexema == 'bool':
+    case codigo == 'RESERVADA' && lexema == 'boolean':
       return 18;
     case codigo == 'NUM':
       return 19;
@@ -90,15 +90,15 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 20;
     case codigo == 'COMA':
       return 21;
-    case codigo == 'OP_NEG':
+    case codigo == 'OPNEG':
       return 22;
-    case codigo == 'OP_MAY':
+    case codigo == 'OPMAY':
       return 23;
     case codigo == 'RESERVADA' && lexema == 'true':
       return 24;
     case codigo == 'RESERVADA' && lexema == 'false':
       return 25;
-    case codigo == 'OP_SUM':
+    case codigo == 'OPSUM':
       return 26;
     case codigo == 'FINAL':
       return 27;

@@ -16,8 +16,17 @@ export const errorHandlerSintax = (estado: number, token: Token) => {
       token.posicion.columna +
       "): No se esperaba el token: " + 
       token.codigo +
-      " ; "
+      ". " + 
       erroresSintactico[estado] +
+      '\n';
+    if (process.argv.includes('-sin')) {
+      console.log(chalk.bgYellow(error));
+    }
+    fs.appendFileSync('outputs/Errores.txt', error);
+  } else if(token.codigo === 'FINAL'){
+    const error: string =
+     '[ERROR SINTÁCTICO]: No se esperaba el fin de fichero. ' 
+     + erroresSintactico[estado] +
       '\n';
     if (process.argv.includes('-sin')) {
       console.log(chalk.bgYellow(error));
