@@ -43,7 +43,7 @@ S -> true
 S -> false
 S' -> ! id
 S' -> T > T
-S' -> true 
+S' -> true
 S' -> false
 U' -> ''
 U' -> U
