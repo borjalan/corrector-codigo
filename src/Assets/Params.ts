@@ -18,7 +18,7 @@ export const reservadas: Array<string> =
     'true',
     'while',
   ];
-export const reglas = 
+export const reglas: Array<[string,string]> = 
 [
  ["Z","Y"],                              //0
  ["Y","A Y"],                            //1
