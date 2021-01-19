@@ -2,33 +2,25 @@ Z -> Y
 Y -> A Y
 Y -> J Y
 Y -> ''
-A -> B 
-A -> C 
-A -> D 
-A -> E 
-A -> F 
-A -> G 
-A -> H 
-A -> I 
-A -> K 
+A -> let M id O ;
+A -> do { A' } while ( S ) ;
+A -> if ( S ) B
+A -> let M id = U ;
+A -> B
+B -> return U' ;
+B -> id = U ;
+B -> id %= U ;
+B -> id ( N ) ;
+B -> alert ( U ) ;
+B -> input ( id ) ;
 A' -> A A'
 A' -> ''
-B -> let M id O ;
-C -> do { A' } while ( S ) ;
-D -> if ( S ) R
-E -> return U' ;
-F -> id = U ;
-F -> id %= U ;
-G -> id ( N ) ;
-H -> alert ( U ) ;
-I -> input ( id ) ;
 J -> function L id ( P ) { A' }
-K -> let M id = U ;
 L -> ''
 L -> M
 M -> string
 M -> number
-M -> boolean
+M -> bool
 N -> ''
 N -> id O
 N -> cte_num O
@@ -41,13 +33,6 @@ P -> ''
 P -> M id Q
 Q -> , M id Q
 Q -> ''
-R -> C
-R -> D
-R -> E
-R -> F
-R -> G
-R -> H
-R -> I
 S -> ! id
 S -> id > id
 S -> id > cte_num
