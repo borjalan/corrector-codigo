@@ -7,12 +7,14 @@ import { TiposFuncion, Token } from '../Types/Types';
 
 // Params
 import { erroresSemantico } from '../Assets/Params';
+import { report } from 'process';
 
 let pilaSemantico: Map<string, Token | TiposFuncion | undefined> = new Map();
 let enFunción: boolean = false;
 let enDo: boolean = false;
 let ultimoId: Token;
 let anteUltimoId: Token;
+let parametrosLlamada: Array<Token>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
@@ -25,7 +27,7 @@ const setContext = (token: Token): void => {
 const evaluarReduccion = (regla: number, token: Token): void => {
   switch (regla) {
     case 0:
-      // TODO: Escribir tablas
+      // TODOTABLA: Escribir tablas
       break;
     case 1:
       // TODO: -----     -----     -----     -----     Nada (Revisar: Añadir algo tras sentencia)
@@ -37,37 +39,50 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       // TODO: -----     -----     -----     -----     Nada (Revisar: Final)
       break;
     case 4:
-      // TODO: Añadir a tabla de símbolos general id
+      // TODOTABLA: Añadir id tipo M a la tabla de símbolos que corresponda
       break;
     case 5:
       // TODO: Comprobar tipo de S = boolean
+      if (!evaluarTipo(pilaSemantico.get('S'), 'boolean')) reportarError(token, regla);
+      pilaSemantico.delete('S');
       break;
     case 6:
       // TODO: Comprobar tipo de S = boolean
+      if (!evaluarTipo(pilaSemantico.get('S'), 'boolean')) reportarError(token, regla);
+      pilaSemantico.delete('S');
       break;
     case 7:
-      // TODO: Añadir id a la tabla de símbolos general
+      // TODOTABLA: Añadir id tipo M a la tabla de símbolos que corresponda
       break;
     case 8:
       // TODO: -----     -----     -----     -----     Nada (Conector entre sentencias)
       break;
     case 9:
-      // TODO: Guardar tipo de U' como tipo de B
+      // TODOTABLA: Comprobar que el return de la función en la que estamos es del tipo U'
       break;
     case 10:
-      // TODO: Guardar tipo de U como tipo de de B
+      // TODO: -----     -----     -----     -----     Nada (No necesario)
       break;
     case 11:
-      // TODO: Guardar tipo de U como tipo de B
+      // TODO: -----     -----     -----     -----     Nada (No necesario)
       break;
     case 12:
-      // TODO: Buscar una función con el lexema de id que cumpla los params proporcionados en N
+      // TODOTABLA: Buscar una función con el lexema de id que cumpla los params proporcionados en N
+      // if ( not ) reportarError(token; , regla)
       break;
     case 13:
       // TODO: Comprobar tipo de U = cadena | número
+      if (
+        !evaluarTipo(pilaSemantico.get('U'), 'number') &&
+        !evaluarTipo(pilaSemantico.get('U'), 'string')
+      )
+        reportarError(ultimoId, regla);
+      pilaSemantico.delete('U');
       break;
     case 14:
       // TODO: Comprobar que el tipo del id = cadena | número
+      if (!evaluarTipo(ultimoId, 'number') && !evaluarTipo(ultimoId, 'string'))
+        reportarError(ultimoId, regla);
       break;
     case 15:
       // TODO: -----     -----     -----     -----     Nada (Conector entre sentencias)
@@ -76,46 +91,62 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       // TODO: -----     -----     -----     -----     Nada (Final sentencia interior bloque)
       break;
     case 17:
-      // TODO: Añadir función a registro de funciones, tipo L, Parámetros P y comprobar que el return es del tipo correcto
+      // TODOTABLA: Añadir función a registro de funciones, tipo L, Parámetros P y comprobar que el return es del tipo correcto
+      enFunción = false;
       break;
     case 18:
-      // TODO: Asignar tipo función igual a L. Si L es lamda entonces es tipo void sin return.
+      // TODOTABLA: Asignar tipo función igual a L. Si L es lamda entonces es tipo void sin return.
       break;
     case 19:
       // TODO: Asignar tipo de M a L
+      pilaSemantico.set('L', pilaSemantico.get('M'));
+      pilaSemantico.delete('M');
       break;
     case 20:
       // TODO: Asignar tipo string a M
+      pilaSemantico.set('M', 'string');
       break;
     case 21:
       // TODO: Asignar tipo number a M
+      pilaSemantico.set('M', 'number');
       break;
     case 22:
       // TODO: Asignar tipo boolean a M
+      pilaSemantico.set('M', 'boolean');
       break;
     case 23:
       // TODO: Llamada a función sin parámetros
+      parametrosLlamada = [];
       break;
     case 24:
       // TODO: Añade id como parámetro inicial de llamada
+      parametrosLlamada = [];
+      parametrosLlamada.push(token);
       break;
     case 25:
       // TODO: Añade const_numérica como parámetro inicial de llamada
+      parametrosLlamada = [];
+      parametrosLlamada.push(token);
       break;
     case 26:
       // TODO: Añade cadena como parámetro inicial de llamada
+      parametrosLlamada = [];
+      parametrosLlamada.push(token);
       break;
     case 27:
       // TODO: Añade id como parámetro de llamada
+      parametrosLlamada.push(token);
       break;
     case 28:
-      // TODO: Final de parámetros de llamada
+      // TODO: -----     -----     -----     -----     Nada (Final de parámetros de llamada)
       break;
     case 29:
       // TODO: Añade cte_num como parámetro de llamada
+      parametrosLlamada.push(token);
       break;
     case 30:
       // TODO: Añade cte_cad como parámetro de llamada
+      parametrosLlamada.push(token);
       break;
     case 31:
       // TODO: -----     -----     -----     -----     Nada (La función no tiene parámetros)
