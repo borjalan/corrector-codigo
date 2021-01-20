@@ -3,21 +3,26 @@ import * as fs from 'fs';
 import chalk from 'chalk';
 
 // Tipos
-import { Tipos, Token } from '../Types/Types';
+import { TiposFuncion, Token } from '../Types/Types';
 
 // Params
 import { erroresSemantico } from '../Assets/Params';
 
-let pilaSemantico: Map<string, Token | Tipos | undefined> = new Map();
+let pilaSemantico: Map<string, Token | TiposFuncion | undefined> = new Map();
 let enFunción: boolean = false;
 let enDo: boolean = false;
+let ultimoId: Token;
+let anteUltimoId: Token;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
-const evaluarReduccion = (regla: number, token: Token): void => {
-  if (token.codigo == 'RESERVADA' && token.atributo?.cadena == 'function') enFunción = true;
-  if (token.codigo == 'RESERVADA' && token.atributo?.cadena == 'do') enDo = true;
+const setContext = (token: Token): void => {
+  if (token.codigo === 'RESERVADA' && token.atributo?.cadena === 'function') enFunción = true;
+  if (token.codigo === 'RESERVADA' && token.atributo?.cadena === 'do') enDo = true;
+  if (token.codigo === 'ID') guardarId(token);
+};
 
+const evaluarReduccion = (regla: number, token: Token): void => {
   switch (regla) {
     case 0:
       // TODO: Escribir tablas
@@ -113,58 +118,87 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       // TODO: Añade cte_cad como parámetro de llamada
       break;
     case 31:
-      // TODO: La función no tiene parámetros
+      // TODO: -----     -----     -----     -----     Nada (La función no tiene parámetros)
       break;
     case 32:
-      // TODO: Añade a la función un parámetro inicial de nombre id y tipo M
+      // TODOTABLA: Añade a la función un parámetro inicial de nombre id y tipo M
       break;
     case 33:
-      // TODO: Añade a la función un parámetro de nombre id y tipo M
+      // TODOTABLA: Añade a la función un parámetro de nombre id y tipo M
       break;
     case 34:
       // TODO: -----     -----     -----     -----     Nada (Final declaración parámetros de función)
       break;
     case 35:
       // TODO: Asignar tipo boolean a S (Comprobar que el tipo de id es boolean)
+      if (!evaluarTipo(token, 'boolean')) reportarError(token, regla);
+      pilaSemantico.set('S', 'boolean');
       break;
     case 36:
       // TODO: Asignar tipo boolean a S (Comprobar que el tipo de los ids es number)
+      if (!evaluarTipo(ultimoId, 'number')) reportarError(ultimoId, regla);
+      if (!evaluarTipo(anteUltimoId, 'number')) reportarError(anteUltimoId, regla);
+      pilaSemantico.set('S', 'boolean');
       break;
     case 37:
       // TODO: Asignar tipo boolean a S (Comprobar que el tipo de id es number)
+      if (!evaluarTipo(ultimoId, 'number')) reportarError(ultimoId, regla);
+      pilaSemantico.set('S', 'boolean');
       break;
     case 38:
       // TODO: Asignar tipo boolean a S (compara 2 cte_num)
+      pilaSemantico.set('S', 'boolean');
       break;
     case 39:
       // TODO: Asignar tipo boolean a S (Comprobar que el tipo de id es boolean)
+      if (!evaluarTipo(token, 'boolean')) reportarError(token, regla);
+      pilaSemantico.set('S', 'boolean');
       break;
     case 40:
       // TODO: Asignar tipo boolean a S (Comprobar que el tipo de id es boolean)
+      if (!evaluarTipo(token, 'boolean')) reportarError(token, regla);
+      pilaSemantico.set('S', 'boolean');
       break;
     case 41:
       // TODO: Asignar tipo boolean a S (true)
+      pilaSemantico.set('S', 'boolean');
       break;
     case 42:
       // TODO: Asignar tipo boolean a S (false)
+      pilaSemantico.set('S', 'boolean');
       break;
     case 43:
       // TODO: Asignar tipo boolean a S' (Comprobar que el tipo de id es boolean)
+      if (!evaluarTipo(token, 'boolean')) reportarError(token, regla);
+      pilaSemantico.set("S'", 'boolean');
       break;
     case 44:
       // TODO: Asignar tipo boolean a S' (Comprobar que ambos tipos de T son number)
+      if (!evaluarTipo(pilaSemantico.get('T'), 'number')) {
+        reportarError(pilaSemantico.get('T'), regla);
+      } else if (!evaluarTipo(pilaSemantico.get('T2'), 'number')) {
+        reportarError(pilaSemantico.get('T2'), regla);
+      }
+      pilaSemantico.delete('T');
+      pilaSemantico.delete('T2');
+      pilaSemantico.set("S'", 'boolean');
       break;
     case 45:
       // TODO: Asignar tipo boolean a S' (true)
+      pilaSemantico.set("S'", 'boolean');
       break;
     case 46:
       // TODO: Asignar tipo boolean a S' (false)
+      pilaSemantico.set("S'", 'boolean');
       break;
     case 47:
       // TODO: Asignar tipo void a U'
+      pilaSemantico.set("U'", 'void');
       break;
     case 48:
       // TODO: Asignar tipo U a U'
+      pilaSemantico.set('U', pilaSemantico.get("U'"));
+      pilaSemantico.delete('U');
       break;
     case 49:
       // TODO: Asignar tipo S' a U
@@ -183,10 +217,10 @@ const evaluarReduccion = (regla: number, token: Token): void => {
           pilaSemantico.set('W', 'number');
           pilaSemantico.delete('V');
         } else {
-          reportarError(pilaSemantico.get('W'), 51);
+          reportarError(pilaSemantico.get('W'), regla);
         }
       } else {
-        reportarError(pilaSemantico.get('V'), 51);
+        reportarError(pilaSemantico.get('V'), regla);
       }
       break;
     case 52:
@@ -230,11 +264,11 @@ const evaluarReduccion = (regla: number, token: Token): void => {
 
 // --------------------------------------------- Funciones privadas ---------------------------------------------
 
-function isToken(token: Tipos | Token | undefined): token is Token {
+function isToken(token: TiposFuncion | Token | undefined): token is Token {
   return (<Token>token).codigo !== undefined;
 }
 
-const obtenerTipo = (token: Token): Tipos | undefined => {
+const obtenerTipo = (token: Token): TiposFuncion | undefined => {
   switch (token.codigo) {
     case 'NUM':
       return 'number';
@@ -250,7 +284,7 @@ const obtenerTipo = (token: Token): Tipos | undefined => {
   }
 };
 
-const evaluarTipo = (token: Token | Tipos | undefined, tipo: Tipos): boolean => {
+const evaluarTipo = (token: Token | TiposFuncion | undefined, tipo: TiposFuncion): boolean => {
   if (!token) return false;
   if (token === tipo) return true;
   if (isToken(token)) {
@@ -274,7 +308,7 @@ const evaluarTipo = (token: Token | Tipos | undefined, tipo: Tipos): boolean => 
   return false;
 };
 
-const reportarError = (token: Token | Tipos | undefined, regla: number): void => {
+const reportarError = (token: Token | TiposFuncion | undefined, regla: number): void => {
   if (isToken(token)) {
     const posicion: string = token.posicion
       ? '(Linea: ' + token.posicion.linea + ', Columna: ' + token.posicion.columna + ' ): '
@@ -292,4 +326,9 @@ const reportarError = (token: Token | Tipos | undefined, regla: number): void =>
   }
 };
 
-export { evaluarReduccion };
+const guardarId = (token: Token): void => {
+  anteUltimoId = ultimoId;
+  ultimoId = token;
+};
+
+export { evaluarReduccion, setContext };
