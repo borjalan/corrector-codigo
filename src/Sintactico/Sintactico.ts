@@ -1,6 +1,7 @@
 import { reglas, actionsGoto } from '../Assets/Params';
 import { errorHandlerSintax } from '../Errors/ErrorsHandler';
 import { Token } from '../Types/Types';
+import * as Semantico from '../Semantico/Semantico';
 
 let pilaSintactico: Array<string> = ['$', '0'];
 
@@ -11,7 +12,7 @@ const parse = (token: Token): string => {
   const columnaAcciones: number = obtenerColumnaAcciones(token);
   const accion: string = actionsGoto[estadoActual][columnaAcciones];
 
-  // parsedTokens.push(token);
+  Semantico.setContext(token);
 
   if (esDesplazamiento(accion)) {
     const desplazamiento: number = valorNum(accion);
@@ -26,6 +27,7 @@ const parse = (token: Token): string => {
     estadoActual = obtenerEstadoActual();
     pilaSintactico.push(numRegla.toString());
     pilaSintactico.push(actionsGoto[estadoActual][columnaRegla]);
+    Semantico.evaluarReduccion(numRegla, token);
     return numRegla.toString();
   } else if (esAceptar(accion)) {
     return 'Finalizado';
@@ -44,7 +46,7 @@ const obtenerEstadoActual = (): number => {
 const obtenerColumnaAcciones = (token: Token): number => {
   const codigo = token.codigo;
   const lexema = token.atributo && token.atributo.cadena;
-  
+
   switch (true) {
     case codigo == 'RESERVADA' && lexema == 'let':
       return 0;
