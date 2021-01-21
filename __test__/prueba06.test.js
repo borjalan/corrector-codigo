@@ -1,0 +1,12 @@
+let number a;
+let number b;
+let boolean bbb;
+a = 3;
+b = a;
+let boolean c;
+c = a > 'patata';
+if (c) b %= 1;
+if (b > a) b = 4;
+a = a + b;
+alert (a);
+alert(b);
