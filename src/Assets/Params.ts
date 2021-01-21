@@ -321,61 +321,61 @@ export const erroresSintactico: Array<string[]>=[
   ]; 
 export const erroresSemantico: Array<string> = 
   [
-   '',//0
-   '',//1
-   '',//2
-   '',//3
-   'la variable ya ha sido declarada',//4
-   'la variable tiene que ser un booleano',//5
-   'la variable tiene que ser un booleano',//6
-   'la variable ya ha sido declarada o no se esta asignando una variable con el mismo tipo',//7
-   '',//8
-   'la funcion no tiene return o el tipo que retorna no es el mismo que el tipo de la funcion',//9
-   'no se esta asignando una variable con el mismo tipo',//10
-   'la variable tiene que ser un numero entero para hacer una asignacion con resto',//11
-   'la funcion no ha sido declarada o los argumentos proporcionados no corresponden a los de la declaracion',//12
-   'la variable tiene que ser un numero entero o una cadena de caracteres',//13
-   'la variable tiene que ser un numero entero o una cadena de caracteres',//14
-   '',//15
-   '',//16
-   'la funcion ya ha sido declarada',//17
-   '',//18
-   '',//19
-   '',//20
-   '',//21
-   '',//22
-   '',//23
-   '',//24
-   '',//25
-   '',//26
-   '',//27
-   '',//28
-   '',//29
-   '',//30
-   '',//31
-   '',//32
-   '',//33
-   '',//34
-   'la variable tiene que ser un booleano',//35
-   'la variable tiene que ser un numero entero',//36
-   'la variable tiene que ser un numero entero',//37
-   '',//38
-   '',//39
-   'la variable tiene que ser un booleano',//40
-   '',//41
-   '',//42
-   'la variable tiene que ser un booleano',//43
-   'la variable tiene que ser un numero entero',//44
-   '',//45
-   '',//46
-   '',//47
-   '',//48
-   '',//49
-   '',//50
-   'la variable tiene que ser un numero entero',//51
-   '',//52
-   '',//53
-   '',//54
-   '',//55
-   '' //56
+   'Regla 0:',//0
+   'Regla 1:',//1
+   'Regla 2:',//2
+   'Regla 3:',//3
+   'Regla 4:la variable ya ha sido declarada',//4
+   'Regla 5:la variable tiene que ser un booleano',//5
+   'Regla 6:la variable tiene que ser un booleano',//6
+   'Regla 7:la variable ya ha sido declarada o no se esta asignando una variable con el mismo tipo',//7
+   'Regla 8:',//8
+   'Regla 9:la funcion no tiene return o el tipo que retorna no es el mismo que el tipo de la funcion',//9
+   'Regla 10:no se esta asignando una variable con el mismo tipo',//10
+   'Regla 11:la variable tiene que ser un numero entero para hacer una asignacion con resto',//11
+   'Regla 12:la funcion no ha sido declarada o los argumentos proporcionados no corresponden a los de la declaracion',//12
+   'Regla 13:la variable tiene que ser un numero entero o una cadena de caracteres',//13
+   'Regla 14:la variable tiene que ser un numero entero o una cadena de caracteres',//14
+   'Regla 15:',//15
+   'Regla 16:',//16
+   'Regla 17:la funcion ya ha sido declarada',//17
+   'Regla 18:',//18
+   'Regla 19:',//19
+   'Regla 20:',//20
+   'Regla 21:',//21
+   'Regla 22:',//22
+   'Regla 23:',//23
+   'Regla 24:',//24
+   'Regla 25:',//25
+   'Regla 26:',//26
+   'Regla 27:',//27
+   'Regla 28:',//28
+   'Regla 29:',//29
+   'Regla 30:',//30
+   'Regla 31:',//31
+   'Regla 32:',//32
+   'Regla 33:',//33
+   'Regla 34:',//34
+   'Regla 35:la variable tiene que ser un booleano',//35
+   'Regla 36:la variable tiene que ser un numero entero',//36
+   'Regla 37:la variable tiene que ser un numero entero',//37
+   'Regla 38:',//38
+   'Regla 39:',//39
+   'Regla 40:la variable tiene que ser un booleano',//40
+   'Regla 41:',//41
+   'Regla 42:',//42
+   'Regla 43:la variable tiene que ser un booleano',//43
+   'Regla 44:la variable tiene que ser un numero entero',//44
+   'Regla 45:',//45
+   'Regla 46:',//46
+   'Regla 47:',//47
+   'Regla 48:',//48
+   'Regla 49:',//49
+   'Regla 50:',//50
+   'Regla 51:la variable tiene que ser un numero entero',//51
+   'Regla 52:',//52
+   'Regla 53:',//53
+   'Regla 54:',//54
+   'Regla 55:',//55
+   'Regla 56:' //56
   ];
