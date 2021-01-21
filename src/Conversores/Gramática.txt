@@ -2,7 +2,7 @@ Z -> Y
 Y -> A Y
 Y -> J Y
 Y -> ''
-A -> let M id O ;
+A -> let M id ;
 A -> do { A' } while ( S ) ;
 A -> if ( S ) B
 A -> let M id = U ;
