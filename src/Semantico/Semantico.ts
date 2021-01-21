@@ -3,18 +3,43 @@ import * as fs from 'fs';
 import chalk from 'chalk';
 
 // Tipos
-import { TiposFuncion, Token } from '../Types/Types';
+import {
+  Lexema,
+  LexemasFuncion,
+  LexemasParametrosFunción,
+  TablaFuncion,
+  TablaSimbolos,
+  Tipos,
+  TiposFuncion,
+  Token,
+} from '../Types/Types';
 
 // Params
 import { erroresSemantico } from '../Assets/Params';
-import { report } from 'process';
 
-let pilaSemantico: Map<string, Token | TiposFuncion | undefined> = new Map();
+let desplazamiento: number = 0;
+let numeroTablaFun: number = 1;
+
+let pilaSemantico: Map<string, Token | Tipos | undefined> = new Map();
 let enFunción: boolean = false;
 let enDo: boolean = false;
+
+let tablaSimbolos: TablaSimbolos = {
+  nombre: 'Tabla Global',
+  número: 0,
+  lexemas: [],
+};
+let tablaFuncion: TablaFuncion;
+let tablasFuncion: Array<TablaFuncion>;
+
 let ultimoId: Token;
 let anteUltimoId: Token;
-let parametrosLlamada: Array<Token>;
+let nombreLlamada: string | undefined;
+
+let ultimoNum: Token;
+let ultimaCad: Token;
+
+let parametrosLlamada: Array<Tipos>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
@@ -28,9 +53,19 @@ const setContext = (token: Token): void => {
   if (token.codigo === 'ID') {
     guardarId(token);
   }
+  if (token.codigo === 'NUM') {
+    ultimoNum = token;
+  }
+  if (token.codigo === 'CADENA') {
+    ultimaCad = token;
+  }
+  if (token.codigo === 'APTPAREN') {
+    nombreLlamada = ultimoId.atributo?.cadena;
+  }
 };
 
 const evaluarReduccion = (regla: number, token: Token): void => {
+  let tipo;
   switch (regla) {
     case 0:
       // TODOTABLA: Escribir tablas
@@ -46,6 +81,21 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       break;
     case 4:
       // TODOTABLA: Añadir id tipo M a la tabla de símbolos que corresponda
+      tipo = obtenerTipo(pilaSemantico.get('M'));
+      pilaSemantico.delete('M');
+
+      if (tipo) {
+        if (isToken(ultimoId)) {
+          if (existeIdEnTabla(ultimoId)) {
+            reportarError(ultimoId, regla);
+          } else {
+            añadirLexema(ultimoId, tipo);
+          }
+        }
+        incrementarDesplazamiento(tipo);
+      } else {
+        console.log('Error que no debería suceder 1');
+      }
       break;
     case 5:
       // TODO: Comprobar tipo de S = boolean
@@ -59,12 +109,32 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       break;
     case 7:
       // TODOTABLA: Añadir id tipo M a la tabla de símbolos que corresponda
+      tipo = obtenerTipo(pilaSemantico.get('M'));
+
+      if (tipo && !evaluarTipo(pilaSemantico.get('U'), tipo)) reportarError(token, regla);
+      if (tipo) {
+        if (isToken(ultimoId)) {
+          if (existeIdEnTabla(ultimoId)) {
+            reportarError(ultimoId, regla);
+          } else {
+            añadirLexema(ultimoId, tipo);
+          }
+        }
+        incrementarDesplazamiento(tipo);
+      } else {
+        console.log('Error que no debería suceder 1');
+      }
+      pilaSemantico.delete('M');
+      pilaSemantico.delete('U');
       break;
     case 8:
       // TODO: -----     -----     -----     -----     Nada (Conector entre sentencias)
       break;
     case 9:
       // TODOTABLA: Comprobar que el return de la función en la que estamos es del tipo U'
+      tipo = obtenerTipo(pilaSemantico.get("U'")) || 'void';
+      if ((obtenerTipo(pilaSemantico.get('L')) || 'void') === tipo) reportarError(token, regla);
+      pilaSemantico.delete("U'");
       break;
     case 10:
       // TODO: -----     -----     -----     -----     Nada (No necesario)
@@ -74,7 +144,17 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       break;
     case 12:
       // TODOTABLA: Buscar una función con el lexema de id que cumpla los params proporcionados en N
-      // if ( not ) reportarError(token; , regla)
+      if (nombreLlamada) {
+        tipo = obtenerParamsLlamadaId(nombreLlamada);
+        if (!tipo) {
+          reportarError(token, regla);
+        } else {
+          if (tipo.length != parametrosLlamada.length) reportarError(token, regla);
+          tipo.forEach((t, i) => {
+            if (t !== parametrosLlamada[i]) reportarError(token, regla);
+          });
+        }
+      }
       break;
     case 13:
       // TODO: Comprobar tipo de U = cadena | número
@@ -98,6 +178,8 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       break;
     case 17:
       // TODOTABLA: Añadir función a registro de funciones, tipo L, Parámetros P y comprobar que el return es del tipo correcto
+      tipo = obtenerTipo(pilaSemantico.get('L'));
+      tablaFuncion.tipoRetorno = tipo ? tipo : 'void';
       enFunción = false;
       break;
     case 18:
@@ -230,7 +312,7 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       break;
     case 47:
       // TODO: Asignar tipo void a U'
-      pilaSemantico.set("U'", 'void');
+      pilaSemantico.set("U'", undefined);
       break;
     case 48:
       // TODO: Asignar tipo U a U'
@@ -291,9 +373,9 @@ const evaluarReduccion = (regla: number, token: Token): void => {
     case 56:
       // TODO: Asignar tipo number a T
       if (!pilaSemantico.has('T')) {
-        pilaSemantico.set('T', token);
+        pilaSemantico.set('T', ultimoNum);
       } else {
-        pilaSemantico.set('T2', token);
+        pilaSemantico.set('T2', ultimoNum);
       }
       break;
   }
@@ -305,33 +387,78 @@ function isToken(token: TiposFuncion | Token | undefined): token is Token {
   return (<Token>token).codigo !== undefined;
 }
 
-const obtenerTipo = (token: Token): TiposFuncion | undefined => {
-  switch (token.codigo) {
-    case 'NUM':
-      return 'number';
-    case 'CADENA':
-      return 'string';
-    case 'ID':
-      //TODO: Buscar el tipo del id en la tabla de función si dentro y general
-      return 'boolean'; //Relleno
-    case 'RESERVADA':
-      return token.atributo?.cadena == ('true' || 'false') ? 'boolean' : undefined;
-    default:
-      return undefined;
+const obtenerTipoIdEnTabla = (token: Token): Tipos | undefined => {
+  if (enFunción) {
+    tablaFuncion.lexemas.forEach((lexema: Lexema | LexemasParametrosFunción) => {
+      if (lexema.nombre == token.atributo?.cadena) {
+        return lexema.atributos.tipo;
+      }
+    });
   }
+  tablaSimbolos.lexemas.forEach((lexema: Lexema | LexemasFuncion) => {
+    if (lexema.nombre == token.atributo?.cadena) {
+      return lexema.atributos.tipo;
+    }
+  });
+  return undefined;
 };
 
-const evaluarTipo = (token: Token | TiposFuncion | undefined, tipo: TiposFuncion): boolean => {
+const existeIdEnTabla = (token: Token): boolean => {
+  if (enFunción) {
+    tablaFuncion.lexemas.forEach((lexema: Lexema | LexemasParametrosFunción) => {
+      if (lexema.nombre == token.atributo?.cadena) {
+        return true;
+      }
+    });
+  }
+  tablaSimbolos.lexemas.forEach((lexema: Lexema | LexemasFuncion) => {
+    if (lexema.nombre == token.atributo?.cadena) {
+      return true;
+    }
+  });
+  return false;
+};
+
+const obtenerParamsLlamadaId = (nombre: string): Array<any> | undefined => {
+  tablaSimbolos.lexemas.forEach((lexema: Lexema | LexemasFuncion) => {
+    if (lexema.nombre === nombre && lexema.atributos.tipo === 'función') {
+      return lexema.atributos.tipoParametros;
+    }
+  });
+  return undefined;
+};
+
+const obtenerTipo = (token: Token | Tipos | undefined): Tipos | undefined => {
+  if (!token) {
+    return token;
+  } else if (isToken(token)) {
+    switch (token.codigo) {
+      case 'NUM':
+        return 'number';
+      case 'CADENA':
+        return 'string';
+      case 'ID':
+        return obtenerTipoIdEnTabla(token);
+      case 'RESERVADA':
+        return token.atributo?.cadena == ('true' || 'false') ? 'boolean' : undefined;
+      default:
+        return undefined;
+    }
+  } else if (token === 'string' || 'boolean' || 'number') {
+    return token;
+  }
+  return undefined;
+};
+
+const evaluarTipo = (token: Token | Tipos | undefined, tipo: Tipos): boolean => {
   if (!token) return false;
   if (token === tipo) return true;
   if (isToken(token)) {
     const lexema = token.atributo && token.atributo.cadena;
     switch (token.codigo) {
       case 'ID':
-        // Buscar id en tablaLocal si toca
-        // Buscar id en tablaGlobal
-        // Evaluar si el tipo obtenido es el correcto
-        return true;
+        const tipoToken = obtenerTipoIdEnTabla(token);
+        return tipo === tipoToken;
       case 'RESERVADA':
         return lexema == ('true' || 'false') && tipo == 'boolean' ? true : false;
       case 'NUM':
@@ -366,6 +493,34 @@ const reportarError = (token: Token | TiposFuncion | undefined, regla: number): 
 const guardarId = (token: Token): void => {
   anteUltimoId = ultimoId;
   ultimoId = token;
+};
+
+const incrementarDesplazamiento = (tipo: TiposFuncion): void => {
+  switch (tipo) {
+    case 'boolean':
+      desplazamiento++;
+      break;
+    case 'number':
+      desplazamiento++;
+      break;
+    case 'string':
+      desplazamiento += 64;
+      break;
+  }
+};
+
+const añadirLexema = (token: Token, tipo: Tipos) => {
+  if (enFunción) {
+    tablaFuncion.lexemas.push({
+      nombre: token.atributo?.cadena,
+      atributos: { tipo: tipo, desplazamiento: desplazamiento },
+    } as Lexema);
+  } else {
+    tablaSimbolos.lexemas.push({
+      nombre: token.atributo?.cadena,
+      atributos: { tipo: tipo, desplazamiento: desplazamiento },
+    } as Lexema);
+  }
 };
 
 export { evaluarReduccion, setContext };

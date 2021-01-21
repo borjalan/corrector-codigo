@@ -4,7 +4,7 @@ let boolean bbb;
 a = 3;
 b = a;
 let boolean c;
-c = a > 'patata';
+c = a > 76;
 if (c) b %= 1;
 if (b > a) b = 4;
 a = a + b;

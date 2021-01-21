@@ -45,12 +45,13 @@ export interface LexemasFuncion {
 
 export interface TablaSimbolos {
   nombre: string;
-  número: 0;
-  lexemas: Array<Lexemas | LexemasFuncion>;
+  número: number;
+  lexemas: Array<Lexema | LexemasFuncion>;
 }
 
 export interface TablaFuncion {
   nombre: string;
   numero: number;
-  lexemas: Array<Lexemas | LexemasParametrosFunción>;
+  tipoRetorno: TiposFuncion;
+  lexemas: Array<Lexema | LexemasParametrosFunción>;
 }
