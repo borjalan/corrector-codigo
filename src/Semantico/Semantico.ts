@@ -19,9 +19,15 @@ let parametrosLlamada: Array<Token>;
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
 const setContext = (token: Token): void => {
-  if (token.codigo === 'RESERVADA' && token.atributo?.cadena === 'function') enFunción = true;
-  if (token.codigo === 'RESERVADA' && token.atributo?.cadena === 'do') enDo = true;
-  if (token.codigo === 'ID') guardarId(token);
+  if (token.codigo === 'RESERVADA' && token.atributo && token.atributo.cadena === 'function') {
+    enFunción = true;
+  }
+  if (token.codigo === 'RESERVADA' && token.atributo && token.atributo.cadena === 'do') {
+    enDo = true;
+  }
+  if (token.codigo === 'ID') {
+    guardarId(token);
+  }
 };
 
 const evaluarReduccion = (regla: number, token: Token): void => {
