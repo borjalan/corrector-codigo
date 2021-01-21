@@ -56,6 +56,14 @@
       "program": "${workspaceFolder}/build/index.js",
       "preLaunchTask": "npm: build",
       "args": ["__test__/prueba05.test.js", "-lex", "-sin", "-sem"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test 06",
+      "program": "${workspaceFolder}/build/index.js",
+      "preLaunchTask": "npm: build",
+      "args": ["__test__/prueba06.test.js", "-lex", "-sin", "-sem"]
     }
   ]
 }

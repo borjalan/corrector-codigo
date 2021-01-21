@@ -188,7 +188,7 @@ const evaluarReduccion = (regla: number, token: Token): void => {
       break;
     case 39:
       // TODO: Asignar tipo boolean a S (Comprobar que el tipo de id es boolean)
-      if (!evaluarTipo(token, 'boolean')) reportarError(token, regla);
+      if (!evaluarTipo(token, 'boolean')) reportarError(token, regla); //TODO debe ser entero no boolean
       pilaSemantico.set('S', 'boolean');
       break;
     case 40:
