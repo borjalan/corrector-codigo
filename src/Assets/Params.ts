@@ -325,20 +325,20 @@ export const erroresSemantico: Array<string> =
    '',//1
    '',//2
    '',//3
-   '',//4
-   '',//5
-   '',//6
-   '',//7
+   'la variable ya ha sido declarada',//4
+   'la variable tiene que ser un booleano',//5
+   'la variable tiene que ser un booleano',//6
+   'la variable ya ha sido declarada o no se esta asignando una variable con el mismo tipo',//7
    '',//8
-   '',//9
-   '',//10
-   '',//11
-   '',//12
-   '',//13
-   '',//14
+   'la funcion no tiene return o el tipo que retorna no es el mismo que el tipo de la funcion',//9
+   'no se esta asignando una variable con el mismo tipo',//10
+   'la variable tiene que ser un numero entero para hacer una asignacion con resto',//11
+   'la funcion no ha sido declarada o los argumentos proporcionados no corresponden a los de la declaracion',//12
+   'la variable tiene que ser un numero entero o una cadena de caracteres',//13
+   'la variable tiene que ser un numero entero o una cadena de caracteres',//14
    '',//15
    '',//16
-   '',//17
+   'la funcion ya ha sido declarada',//17
    '',//18
    '',//19
    '',//20
@@ -356,23 +356,23 @@ export const erroresSemantico: Array<string> =
    '',//32
    '',//33
    '',//34
-   '',//35
-   '',//36
-   '',//37
+   'la variable tiene que ser un booleano',//35
+   'la variable tiene que ser un numero entero',//36
+   'la variable tiene que ser un numero entero',//37
    '',//38
    '',//39
-   '',//40
+   'la variable tiene que ser un booleano',//40
    '',//41
    '',//42
-   '',//43
-   '',//44
+   'la variable tiene que ser un booleano',//43
+   'la variable tiene que ser un numero entero',//44
    '',//45
    '',//46
    '',//47
    '',//48
    '',//49
    '',//50
-   '',//51
+   'la variable tiene que ser un numero entero',//51
    '',//52
    '',//53
    '',//54
