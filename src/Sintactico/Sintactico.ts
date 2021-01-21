@@ -68,9 +68,9 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 8;
     case codigo == 'RESERVADA' && lexema == 'if':
       return 9;
-    case codigo == 'RESERVADA' && lexema == 'return':
-      return 10;
     case codigo == 'OPASIG':
+      return 10;
+    case codigo == 'RESERVADA' && lexema == 'return':
       return 11;
     case codigo == 'OPASIGCRES':
       return 12;
@@ -118,56 +118,38 @@ const getColumnaRegla = (numRegla: number): number => {
       return 29;
     case 'A':
       return 30;
-    case "A'":
+    case "B":
       return 31;
-    case 'B':
+    case "A'":
       return 32;
-    case 'C':
-      return 33;
-    case 'D':
-      return 34;
-    case 'E':
-      return 35;
-    case 'F':
-      return 36;
-    case 'G':
-      return 37;
-    case 'H':
-      return 38;
-    case 'I':
-      return 39;
     case 'J':
-      return 40;
-    case 'K':
-      return 41;
+      return 33;
     case 'L':
-      return 42;
+      return 34;
     case 'M':
-      return 43;
+      return 35;
     case 'N':
-      return 44;
+      return 36;
     case 'O':
-      return 45;
+      return 37;
     case 'P':
-      return 46;
+      return 38;
     case 'Q':
-      return 47;
-    case 'R':
-      return 48;
+      return 39;
     case 'S':
-      return 49;
+      return 40;
     case "S'":
-      return 50;
+      return 41;
     case "U'":
-      return 51;
+      return 42;
     case 'U':
-      return 52;
+      return 43;
     case 'V':
-      return 53;
+      return 44;
     case 'W':
-      return 54;
+      return 45;
     case 'T':
-      return 55;
+      return 46;
     default:
       return 0;
   }
