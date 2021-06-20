@@ -29,12 +29,12 @@ export const reglas: Array<[string,string]> =
  ["A","if ( S ) B"],                     //6
  ["A","let M id = U ;"],                 //7
  ["A","B"],                              //8
- ["B","return U' ;"],                    //9
- ["B","id = U ;"],                       //10
- ["B","id %= U ;"],                      //11
- ["B","id ( N ) ;"],                     //12
- ["B","alert ( U ) ;"],                  //13
- ["B","input ( id ) ;"],                 //14
+ ["B","id = U ;"],                       //9
+ ["B","id %= U ;"],                      //10
+ ["B","id ( N ) ;"],                     //11
+ ["B","alert ( U ) ;"],                  //12
+ ["B","input ( id ) ;"],                 //13                        
+ ["A'","return U' ;"],                   //14
  ["A'","A A'"],                          //15
  ["A'","λ"],                             //16
  ["J","function L id ( P ) { A' }"],     //17
@@ -329,7 +329,7 @@ export const erroresSemantico: Array<string> =
    'la variable tiene que ser un booleano',//6
    'la variable ya ha sido declarada o no se esta asignando una variable con el mismo tipo',//7
    '',//8
-   'la funcion no tiene return o el tipo que retorna no es el mismo que el tipo de la funcion',//9
+   'la funcion es void o el tipo que retorna no es el mismo que el tipo de la funcion',//9
    'no se esta asignando una variable con el mismo tipo',//10
    'la variable tiene que ser un numero entero para hacer una asignacion con resto',//11
    'la funcion no ha sido declarada o los argumentos proporcionados no corresponden a los de la declaracion',//12
