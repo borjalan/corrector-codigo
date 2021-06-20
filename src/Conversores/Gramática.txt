@@ -2,18 +2,18 @@ Z -> Y
 Y -> A Y
 Y -> J Y
 Y -> ''
-A -> let M id O ;
+A -> let M id ;
 A -> do { A' } while ( S ) ;
 A -> if ( S ) B
 A -> let M id = U ;
 A -> B
-B -> return U' ;
 B -> id = U ;
 B -> id %= U ;
 B -> id ( N ) ;
 B -> alert ( U ) ;
 B -> input ( id ) ;
 A' -> A A'
+A' -> return U' ;
 A' -> ''
 J -> function L id ( P ) { A' }
 L -> ''
