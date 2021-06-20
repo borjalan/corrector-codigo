@@ -39,7 +39,7 @@ let nombreLlamada: string | undefined;
 let ultimoNum: Token;
 let ultimaCad: Token;
 
-let parametrosLlamada: Array<Tipos>;
+let parametrosLlamada: Array<Token>;
 
 // --------------------------------------------- Funciones públicas ---------------------------------------------
 
