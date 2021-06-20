@@ -70,13 +70,13 @@ const obtenerColumnaAcciones = (token: Token): number => {
       return 9;
     case codigo == 'OPASIG':
       return 10;
-    case codigo == 'RESERVADA' && lexema == 'return':
+    case codigo == 'OPASIGCRES': 
       return 11;
-    case codigo == 'OPASIGCRES':
-      return 12;
     case codigo == 'RESERVADA' && lexema == 'alert':
-      return 13;
+      return 12;
     case codigo == 'RESERVADA' && lexema == 'input':
+      return 13;
+    case codigo == 'RESERVADA' && lexema == 'return':
       return 14;
     case codigo == 'RESERVADA' && lexema == 'function':
       return 15;
